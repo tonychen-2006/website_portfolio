@@ -67,7 +67,7 @@ const projects: Project[] = [
     description: [
       "FreeRTOS task that reads raw NMEA 0183 sentences (GGA, GLL, GSA, RMC, VTG, GSV) from a GPS module over UART, validates each sentence's checksum, and extracts position, velocity, and fix-quality fields.",
       "Parsed data packaged into CAN frames and transmitted over the solar car's telemetry system, enabling the pit crew to locate the vehicle to within 0.5m at a 200ms update rate.",
-      "Task architecture designed within the FreeRTOS scheduler to meet strict real-time deadlines without starving higher-priority drive-state and CAN bus tasks.",
+      "Task architecture designed within the FreeRTOS scheduler to meet strict real-time deadlines without starving higher-priority tasks.",
     ],
     role: "Sole firmware author — NMEA parser, checksum validation, CAN frame packing, FreeRTOS task design and integration.",
     tools: ["C", "STM32", "FreeRTOS", "NMEA 0183", "CAN bus", "UART", "J-Link / GDB"],
