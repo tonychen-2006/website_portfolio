@@ -1,0 +1,144 @@
+.section {
+  margin-top: 2.5rem;
+  padding: 2rem 1.8rem;
+  border: 1px solid var(--border);
+  border-radius: 0;
+  background: var(--bg-block);
+}
+
+.sectionHead {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-bottom: 0;
+}
+
+.sectionHead h2 {
+  margin: 0;
+}
+
+.badge {
+  font-size: 0.73rem;
+  padding: 0.18rem 0.6rem;
+  border-radius: 0;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  font-family: var(--font-body);
+  white-space: nowrap;
+}
+
+.badgeParsed {
+  background: rgba(52, 211, 153, 0.1);
+  color: var(--accent);
+  border-color: rgba(52, 211, 153, 0.25);
+}
+
+.badgeFallback {
+  background: rgba(251, 191, 36, 0.08);
+  color: #fbbf24;
+  border-color: rgba(251, 191, 36, 0.22);
+}
+
+.timeline {
+  position: relative;
+  padding-left: 1.6rem;
+  margin-top: 1rem;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  bottom: 0;
+  width: 1px;
+  background: var(--accent);
+}
+
+.entry {
+  position: relative;
+  padding-bottom: 2.2rem;
+}
+
+.entry:last-child {
+  padding-bottom: 0;
+}
+
+.dot {
+  position: absolute;
+  left: -1.6rem;
+  top: 0.52rem;
+  width: 9px;
+  height: 9px;
+  border-radius: 0;
+  background: var(--bg);
+  border: 2px solid var(--accent);
+  transform: translateX(-4px);
+}
+
+.entryHead {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.role {
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.meta {
+  margin: 0.2rem 0 0;
+  font-size: 0.88rem;
+  color: var(--muted);
+}
+
+.period {
+  font-size: 0.82rem;
+  color: var(--accent);
+  white-space: nowrap;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  border-radius: 0;
+  background: rgba(52, 211, 153, 0.07);
+  align-self: flex-start;
+  flex-shrink: 0;
+  font-family: var(--font-body);
+}
+
+.list {
+  margin: 0.75rem 0 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.list li {
+  color: var(--muted);
+  font-size: 0.93rem;
+  line-height: 1.55;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.85rem;
+}
+
+.tag {
+  font-size: 0.82rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 0;
+  background: rgba(52, 211, 153, 0.09);
+  color: var(--accent);
+  border: 1px solid rgba(52, 211, 153, 0.22);
+  font-family: var(--font-body);
+}

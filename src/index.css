@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap");
+
+:root {
+  --bg:          #0a0f12;
+  --bg-soft:     #111a20;
+  --bg-block:    #0e161c;
+  --text:        #ebf2f7;
+  --muted:       #8fabbe;
+  --accent:      #34d399;
+  --accent-soft: #1c6e50;
+  --border:      #243040;
+  --shadow:      rgba(0, 0, 0, 0.48);
+  --font-head:   "Press Start 2P", monospace;
+  --font-body:   "Share Tech Mono", monospace;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  min-height: 100vh;
+  -webkit-font-smoothing: none;
+  image-rendering: pixelated;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-head);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+h3 {
+  font-size: 0.8rem;
+}
+
+::selection {
+  background: var(--accent);
+  color: #000;
+}
+
+h2 {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1rem;
+  margin: 0 0 1.6rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 1px solid var(--border);
+}
+
+h2::before {
+  content: '>';
+  color: var(--accent);
+  font-family: var(--font-head);
+  font-size: 0.7em;
+  flex-shrink: 0;
+}
+
+.bg-glow {
+  display: none;
+}
+
+.main-content {
+  position: relative;
+  z-index: 1;
+  width: min(1080px, 92vw);
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}

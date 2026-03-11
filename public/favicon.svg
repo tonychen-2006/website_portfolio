@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" shape-rendering="crispEdges">
+  <!-- Background -->
+  <rect width="32" height="32" fill="#0a0f12"/>
+  <!-- Border -->
+  <rect x="0" y="0" width="32" height="2" fill="#34d399"/>
+  <rect x="0" y="30" width="32" height="2" fill="#34d399"/>
+  <rect x="0" y="0" width="2" height="32" fill="#34d399"/>
+  <rect x="30" y="0" width="2" height="32" fill="#34d399"/>
+  <!-- T: top bar -->
+  <rect x="3" y="8" width="11" height="3" fill="#34d399"/>
+  <!-- T: stem -->
+  <rect x="7" y="11" width="3" height="13" fill="#34d399"/>
+  <!-- C: top bar -->
+  <rect x="18" y="8" width="11" height="3" fill="#34d399"/>
+  <!-- C: left bar -->
+  <rect x="18" y="8" width="3" height="16" fill="#34d399"/>
+  <!-- C: bottom bar -->
+  <rect x="18" y="21" width="11" height="3" fill="#34d399"/>
+</svg>>
+  <rect width="32" height="32" rx="7" fill="#34d399"/>
+  <!-- Bold T -->
+  <rect x="3" y="6" width="26" height="6" rx="1.5" fill="#0a0f12"/>
+  <rect x="13" y="12" width="6" height="15" rx="1.5" fill="#0a0f12"/>
+</svg>
