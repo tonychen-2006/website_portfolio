@@ -85,9 +85,9 @@ const projects: Project[] = [
     title: "FPGA Tron — Light-Cycle Game",
     summary: "Tron light-cycle game running on an FPGA with VGA output and a lookahead AI opponent.",
     description: [
-      "160×120 pixel VGA arena running on a Nios V (RISC-V rv32im_zicsr) soft processor on the Intel DE10-Lite FPGA in bare-metal C.",
-      "Interrupt-driven player input — KEY0/KEY1 pushbuttons queue turns that resolve at the next game tick; speed selected via slide switches.",
-      "Lookahead AI opponent; collisions with walls, obstacles, or trails end a round; simultaneous head-on collision scores a draw.",
+      "160×120 pixel VGA arena running on a Nios V (RISC-V) soft processor on the Intel DE10-Lite FPGA in bare-metal C.",
+      "Interrupt-driven player input, KEY0/KEY1 pushbuttons queue turns that resolve at the next game tick and speed selected via slide switches.",
+      "Lookahead AI opponent, collisions with walls, obstacles, or trails end a round and simultaneous head-on collision scores a draw.",
       "Scores displayed live on 7-segment HEX displays; full-screen colour flash signals the end of a 9-round match.",
     ],
     role: "Sole developer — game logic, VGA rendering loop, interrupt-driven input, lookahead AI, and cross-compiled build system.",
