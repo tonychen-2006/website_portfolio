@@ -9,7 +9,7 @@ export interface Project {
   id: number;
   title: string;
   summary: string;
-  description: string;
+  description: string[];   // each string = one bullet point
   role: string;
   tools: string[];
   images?: ProjectImage[];   // multiple → carousel; one → static; omit → no photo
@@ -20,58 +20,148 @@ export interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Autonomous Line-Following Robot",
-    summary: "PID-controlled embedded robot for dynamic track navigation.",
-    description:
-      "Designed and built a compact robot using PID feedback control to navigate dynamic tracks at speed. Integrated IR sensor calibration routines and optimized motor PWM response for stable behaviour under variable ambient lighting. Tuned Kp, Ki, Kd coefficients iteratively using oscilloscope waveform analysis.",
-    role: "Embedded control logic, PCB integration, system calibration and testing.",
-    tools: ["C/C++", "STM32", "KiCad", "FreeRTOS"],
+    title: "Driver Display - Drive State Machine",
+    summary: "Safety-critical drive-state controller for a solar race car HMI.",
+    description: [
+      "Safety-critical FSM controlling → REVERSE <-> PARK <-> DRIVE state transitions, with pre-condition checks (brake hold, motor temp, BMS status) enforced before any transition is accepted.",
+      "CAN bus message parsing from the motor controller and BMS through a custom hardware abstraction layer; outgoing state commands packed as CAN frames and sent to the motor control interface.",
+      "Interrupt-driven peripheral drivers for button inputs, and indicator LEDs, allowing deterministic response times under FreeRTOS.",
+      "Utilizes an Extended Kalman Filter (EKF) program to estimate battery state-of-charge",
+    ],
+    role: "Drive-state machine design and implementation, CAN message parsing, HAL for dashboard peripherals, FreeRTOS task architecture.",
+    tools: ["C", "STM32", "FreeRTOS", "CAN bus", "STM32CubeIDE", "J-Link / GDB"],
     images: [
       {
-        src: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1200&q=80",
-        alt: "Prototype electronics board on a workbench",
-      },
-      {
-        src: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1200&q=80",
-        alt: "Robot prototype in testing",
+        src: "/drd.png",
+        alt: "Driver display dashboard on the solar race car",
       },
     ],
-    githubUrl: "https://github.com/yourusername/line-following-robot",
-    category: "course",
+    githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/main/firmware/components/drd",
+    category: "design-team",
   },
   {
     id: 2,
-    title: "Smart Energy Dashboard",
-    summary: "Real-time energy monitoring web app for student residences.",
-    description:
-      "Built a full-stack dashboard aggregating power consumption data from smart meters and visualizing 7-day trends to support efficient energy usage decisions. Implemented a lightweight REST API, a PostgreSQL time-series schema, and a responsive Chart.js front-end with weekly summary emails.",
-    role: "Data pipeline design, REST endpoints, database schema, UI implementation.",
-    tools: ["React", "TypeScript", "Node.js", "PostgreSQL", "Chart.js"],
+    title: "Sunlite — Cellular Telemetry Gateway",
+    summary: "Raspberry Pi 4B service streaming live solar car CAN telemetry to InfluxDB over LTE/5G.",
+    description: [
+      "Python service running on a Raspberry Pi 4B that reads live vehicle CAN traffic through its telemetry system using UART, decodes frames against the team's DBC file, and forwards timestamped records to an InfluxDB instance over a NETGEAR LTE/5G hotspot.",
+      "Tailscale mesh VPN configured on the Pi for secure remote SSH access from any team member's machine without exposing the Pi to the public internet.",
+      "Automated installation via shell scripts that provision the Python venv, dependencies, systemd services, InfluxDB CLI, and Tailscale in a single run on a fresh Raspberry Pi OS image.",
+      "Simulation and characterization tooling for validating the pipeline against a YAML-templated CAN message set without physical hardware.",
+    ],
+    role: "CAN-to-InfluxDB pipeline, gRPC transport layer, Tailscale remote access setup, installation automation, and simulation tooling.",
+    tools: ["Python", "Raspberry Pi 4B", "CAN bus", "DBC", "InfluxDB", "gRPC", "Tailscale", "LTE/5G", "systemd", "Shell"],
     images: [
       {
-        src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80",
-        alt: "Code editor showing a dashboard interface",
+        src: "/cellular.jpeg",
+        alt: "Sunlite cellular telemetry hardware on the solar race car",
       },
     ],
-    githubUrl: "https://github.com/yourusername/energy-dashboard",
+    githubUrl: "https://github.com/UBC-Solar/sunlite",
     category: "design-team",
   },
   {
     id: 3,
-    title: "Vision-Based Defect Detection",
-    summary: "CNN pipeline classifying PCB manufacturing defects from images.",
-    description:
-      "Developed a computer vision pipeline using a fine-tuned ResNet50 to classify five defect categories from PCB sample images. Focused on balancing model accuracy with inference efficiency for edge deployment constraints. Achieved 94% test accuracy; containerised the inference service with Docker.",
-    role: "Dataset curation, model training & evaluation, deployment scripting.",
-    tools: ["Python", "PyTorch", "OpenCV", "Docker"],
+    title: "GPS Telemetry Firmware",
+    summary: "FreeRTOS firmware thread parsing live GPS data from NMEA sentences and broadcasting positions over CAN.",
+    description: [
+      "FreeRTOS task that reads raw NMEA 0183 sentences (GGA, GLL, GSA, RMC, VTG, GSV) from a GPS module over UART, validates each sentence's checksum, and extracts position, velocity, and fix-quality fields.",
+      "Parsed data packaged into CAN frames and transmitted over the solar car's telemetry system, enabling the pit crew to locate the vehicle to within 0.5m at a 200ms update rate.",
+      "Task architecture designed within the FreeRTOS scheduler to meet strict real-time deadlines without starving higher-priority drive-state and CAN bus tasks.",
+    ],
+    role: "Sole firmware author — NMEA parser, checksum validation, CAN frame packing, FreeRTOS task design and integration.",
+    tools: ["C", "STM32", "FreeRTOS", "NMEA 0183", "CAN bus", "UART", "J-Link / GDB"],
     images: [
       {
-        src: "https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?auto=format&fit=crop&w=1200&q=80",
-        alt: "Laptop showing data visualisations",
+        src: "/gps.png",
+        alt: "GPS module mounted on the UBC Solar car PCB",
       },
     ],
-    githubUrl: "https://github.com/yourusername/defect-detection",
+    githubUrl: "https://github.com/UBC-Solar/firmware_v3/tree/master/components/tel",
+    category: "design-team",
+  },
+  {
+    id: 4,
+    title: "FPGA Tron — Light-Cycle Game",
+    summary: "Tron light-cycle game running on an FPGA with VGA output and a lookahead AI opponent.",
+    description: [
+      "160×120 pixel VGA arena running on a Nios V (RISC-V rv32im_zicsr) soft processor on the Intel DE10-Lite FPGA in bare-metal C.",
+      "Interrupt-driven player input — KEY0/KEY1 pushbuttons queue turns that resolve at the next game tick; speed selected via slide switches.",
+      "Lookahead AI opponent; collisions with walls, obstacles, or trails end a round; simultaneous head-on collision scores a draw.",
+      "Scores displayed live on 7-segment HEX displays; full-screen colour flash signals the end of a 9-round match.",
+    ],
+    role: "Sole developer — game logic, VGA rendering loop, interrupt-driven input, lookahead AI, and cross-compiled build system.",
+    tools: ["C", "Nios V (RISC-V)", "Intel DE10-Lite", "VGA", "FPGA", "Makefile"],
+    images: [
+      {
+        src: "/tron.jpeg",
+        alt: "FPGA Tron light-cycle game running on VGA display",
+      },
+    ],
+    githubUrl: "https://github.com/tonychen-2006/fpga_tron_game",
+    category: "course",
+  },
+  {
+    id: 5,
+    title: "RISC-V Single-Cycle CPU",
+    summary: "A complete RV32I-subset CPU implemented in SystemVerilog and verified on an Intel FPGA.",
+    description: [
+      "Classic single-cycle architecture (Harris & Harris): every instruction completes in one clock cycle with no pipelining or caching.",
+      "Controller split into a main decoder (opcode → control signals) and ALU decoder (funct3/funct7 → ALUControl), directing a datapath with a 32×32-bit register file, sign-extender, ALU, and result mux.",
+      "Supports R-type (add, sub, and, or, slt), I-type (lw, addi, andi, ori, slti), S-type (sw), B-type (beq), and J-type (jal) instructions.",
+      "DE-board peripherals (LEDs, HEX displays, slide switches) exposed via MMIO at 0xFF200000; correctness verified with a self-checking SystemVerilog testbench and a hand-assembled assembly demo.",
+    ],
+    role: "Sole designer — full RTL implementation across all modules (controller, datapath, ALU, regfile, memories), testbench authoring, and assembly-level verification.",
+    tools: ["SystemVerilog", "RISC-V Assembly", "ModelSim / QuestaSim", "Intel DE10-Lite", "FPGA"],
+    images: [
+      {
+        src: "/riscv.jpeg",
+        alt: "RISC-V single-cycle CPU block diagram and FPGA board",
+      },
+    ],
+    githubUrl: "https://github.com/tonychen-2006/riscv_cpu_single_cycle",
+    category: "course",
+  },
+  {
+    id: 6,
+    title: "Music Sync — GoPro × Apple Music Bridge",
+    summary: "ESP32 + iOS system that auto-syncs GoPro recordings to Apple Music for frame-perfect video edits.",
+    description: [
+      "ESP32 BLE GATT server (Nordic UART Service) paired to an iOS CoreBluetooth client; the app polls Apple Music every 150ms and sends song URI, title, duration, playback state, and millisecond-accurate position as compact BLE commands.",
+      "ESP32 WiFi client drives the GoPro HTTP shutter API and automatically starts and stops recording when playback state changes, keeping footage locked to the music timeline.",
+      "Song and starting/ending clip events persisted to LittleFS flash, then on-demand Final Cut Pro-compatible XML timeline generation, split into 140-byte BLE chunks for reliable transfer.",
+      "iOS app reassembles BLE chunks, reconstructs the full XML, and exports it via the native share sheet for direct import into Final Cut Pro.",
+    ],
+    role: "Sole developer — ESP32 C++ firmware (BLE server, GoPro WiFi control, LittleFS event log, XML generation, chunk protocol), iOS Swift app (CoreBluetooth client, Apple Music tracking, XML reassembly, share sheet).",
+    tools: ["C++", "ESP32", "PlatformIO", "Swift", "SwiftUI", "CoreBluetooth", "BLE", "LittleFS", "GoPro HTTP API", "Xcode"],
+    images: [
+      {
+        src: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80",
+        alt: "GoPro camera with music and recording equipment",
+      },
+    ],
+    githubUrl: "https://github.com/tonychen-2006/music_sync",
     category: "personal",
+  },
+  {
+    id: 7,
+    title: "Custom Heap Allocator",
+    summary: "A from-scratch dynamic memory allocator in C with block splitting, coalescing, and alignment.",
+    description: [
+      "Implemented malloc, free, and realloc from scratch in C, supporting block splitting on allocation and immediate coalescing of adjacent free blocks to reduce heap fragmentation.",
+      "Designed a free-list metadata structure (header/footer boundary tags) to enable O(1) coalescing and efficient heap traversal without scanning all allocated blocks.",
+      "Enforced 8-byte alignment on all allocations and validated correctness with a heap consistency checker that detects overlapping blocks, invalid pointers, and list invariant violations.",
+    ],
+    role: "Sole developer — allocator design, metadata layout, free-list management, alignment enforcement, and heap consistency checker.",
+    tools: ["C", "GDB", "Valgrind", "Linux"],
+    images: [
+      {
+        src: "/malloc.png",
+        alt: "Custom heap allocator memory block diagram",
+      },
+    ],
+    githubUrl: "https://github.com/tonychen-2006/heap_allocation/tree/main",
+    category: "course",
   },
 ];
 

@@ -2,6 +2,7 @@ export interface Experience {
   id: number;
   role: string;
   company: string;
+  companyUrl?: string;
   location: string;
   period: string;
   achievements: string[];

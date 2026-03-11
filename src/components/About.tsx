@@ -31,8 +31,12 @@ export default function About() {
     <section className={styles.about} id="about">
       <h2>About Me</h2>
       <p>
-        UBC ECE student building at the intersection of hardware and software —
-        embedded systems, intelligent software, and product-focused engineering.
+        I am a current UBC ECE student focused on developing at the intersection between 
+        hardware and software. I am especially passionate in embedded systems and firmware
+        development, as I am always excited to build engaging, productive and innovative products.
+        At UBC, I am part of a student design team designing solar-powered electric racing vehicles
+        on the embedded systems and hardware team. Outside of my technical life, I enjoy going to the 
+        gym, hiking the mountains, and drawing!
       </p>
       <div className={styles.social}>
         <a

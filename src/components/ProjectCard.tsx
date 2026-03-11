@@ -33,7 +33,16 @@ export default function ProjectCard({ project }: Props) {
     <article className={styles.card}>
       {imgs.length > 0 && (
         <div className={styles.imageWrap}>
-          <img src={imgs[idx].src} alt={imgs[idx].alt} loading="lazy" key={idx} />
+          <img
+            src={imgs[idx].src}
+            alt={imgs[idx].alt}
+            loading="lazy"
+            key={idx}
+            onError={(e) => {
+              const wrap = (e.currentTarget as HTMLImageElement).closest(`.${styles.imageWrap}`) as HTMLElement | null;
+              if (wrap) wrap.style.display = "none";
+            }}
+          />
           {multi && (
             <div className={styles.carouselControls}>
               <button onClick={prev} aria-label="Previous image" className={styles.carouselBtn}>
@@ -59,25 +68,31 @@ export default function ProjectCard({ project }: Props) {
       <div className={styles.content}>
         <div className={styles.titleRow}>
           <h3 className={styles.title}>{project.title}</h3>
-          {project.githubUrl && (
-            <a
-              href={project.githubUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.githubLink}
-              aria-label={`View ${project.title} on GitHub`}
-            >
-              <GitHubIcon />
-            </a>
-          )}
         </div>
-        <p className={styles.description}>{project.description}</p>
+        <ul className={styles.description}>
+          {project.description.map((point) => (
+            <li key={point}>{point}</li>
+          ))}
+        </ul>
         <p className={styles.role}>{project.role}</p>
         <div className={styles.tools}>
           {project.tools.map((t) => (
             <span key={t} className={styles.tool}>{t}</span>
           ))}
         </div>
+        {project.githubUrl && (
+          <div className={styles.repoRow}>
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.repoBtn}
+            >
+              <GitHubIcon />
+              View Repo
+            </a>
+          </div>
+        )}
       </div>
     </article>
   );

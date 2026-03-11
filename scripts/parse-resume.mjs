@@ -47,9 +47,17 @@ const data = new Uint8Array(readFileSync(pdfPath));
 const pdf  = await pdfjsLib.getDocument({ data }).promise;
 
 const allLines = [];
+const allUrls  = []; // collected from PDF link annotations
+
 for (let p = 1; p <= pdf.numPages; p++) {
   const page    = await pdf.getPage(p);
   const content = await page.getTextContent();
+
+  // Collect hyperlink annotations
+  const annotations = await page.getAnnotations();
+  for (const ann of annotations) {
+    if (ann.subtype === 'Link' && ann.url) allUrls.push(ann.url);
+  }
 
   // Group text items by y-coordinate to reconstruct visual lines.
   // PDF y=0 is page bottom, so sort descending → top-to-bottom order.
@@ -64,6 +72,38 @@ for (let p = 1; p <= pdf.numPages; p++) {
     const line = byY.get(y).join(' ').trim();
     if (line) allLines.push(line);
   });
+}
+
+// ── Company URL lookup ────────────────────────────────────────────────
+// Maps a lowercase keyword (matched against the company name) → website URL.
+// Add new entries here whenever a new role is added to the resume.
+const COMPANY_URL_MAP = [
+  { match: 'ubc solar',  url: 'https://ubcsolar.com'           },
+  { match: 'verdi',      url: 'https://www.verdi.ag'           },
+];
+
+// Return the URL whose keyword appears in the company name (case-insensitive).
+// Falls back to PDF annotation URLs if keyword matching finds nothing.
+const STOP_WORDS = new Set(['the','and','for','inc','ltd','llc','corp','student','design','team','racing','university','of']);
+function findCompanyUrl(company) {
+  const lower = company.toLowerCase();
+
+  // 1. Static lookup table (most reliable)
+  for (const entry of COMPANY_URL_MAP) {
+    if (lower.includes(entry.match)) return entry.url;
+  }
+
+  // 2. PDF annotation URLs — match by domain keyword
+  const words = lower.replace(/[^a-z0-9\s]/g, ' ').split(/\s+/)
+    .filter(w => w.length > 2 && !STOP_WORDS.has(w));
+  for (const url of allUrls) {
+    try {
+      const domain = new URL(url).hostname.replace(/^www\./, '');
+      if (words.some(w => domain.includes(w))) return url;
+    } catch { /* skip invalid */ }
+  }
+
+  return undefined;
 }
 
 // ── Parse experience section ──────────────────────────────────────────
@@ -141,10 +181,12 @@ while (i < section.length) {
       i++;
     }
 
+    const companyUrl = findCompanyUrl(company || '');
     results.push({
       id: results.length + 1,
       role:     role     || 'Role',
       company:  company  || 'Company',
+      ...(companyUrl ? { companyUrl } : {}),
       location,
       period,
       achievements,

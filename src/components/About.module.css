@@ -9,7 +9,6 @@
 .about p {
   margin: 0.55rem 0;
   color: var(--muted);
-  max-width: 68ch;
 }
 
 .social {

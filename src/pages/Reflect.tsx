@@ -22,28 +22,12 @@ const TABS: { label: string; value: Category }[] = [
 
 const posts: Post[] = [
   {
-    slug: "why-ece",
-    date: "Mar 2026",
-    title: "Why I chose Electrical & Computer Engineering",
-    excerpt:
-      "A reflection on the moment I realized I wanted to build things that sit at the edge of physics and software — and what that actually looks like in practice at UBC.",
-    category: "academics",
-  },
-  {
     slug: "lessons-from-internship",
     date: "Jan 2026",
     title: "What my first engineering internship actually taught me",
     excerpt:
       "The gap between classroom knowledge and production code is real. Here's what surprised me, what humbled me, and what I'd tell myself before starting.",
     category: "work",
-  },
-  {
-    slug: "on-side-projects",
-    date: "Nov 2025",
-    title: "On side projects and learning in public",
-    excerpt:
-      "I used to keep everything private until it was 'ready'. Shipping half-finished work turned out to be one of the best things I did for my learning.",
-    category: "projects",
   },
 ];
 

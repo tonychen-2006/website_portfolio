@@ -9,12 +9,13 @@ const resumeExperiences: Experience[] = [
     "id": 1,
     "role": "Embedded Systems / Firmware Engineer",
     "company": "UBC Solar Racing (Student Design Team)",
+    "companyUrl": "https://ubcsolar.com",
     "location": "Vancouver, BC",
     "period": "Sep 2024 – Present",
     "achievements": [
       "Led firmware development for the Driver Dashboard subsystem, implementing the vehicle drive-state control logic as a safety-critical state machine while integrating CAN bus messaging and hardware abstraction layers for dashboard inputs and indicators.",
-      "Built a Raspberry Pi–based Python gateway connected to a Netgear hotspot to parse vehicle telemetry data and stream it to InfluxDB/Grafana, reducing latency (less than 2 seconds) and enabling the team to remotely monitor signals and diagnose errors in real time",
-      "Implemented GPS data acquisition firmware as a FreeRTOS thread that parsed NMEA sentences (GGA, GLL, GSA, RMC, VTG, GSV), validated checksums, and packaged results into CAN frames sent over a radio/cellular module, enabling the pit crew to locate the vehicle within 0.5-meter accuracy at a 200ms latency..",
+      "Built a Raspberry Pi–based Python gateway connected to a Netgear hotspot to parse vehicle telemetry data and stream it to InfluxDB/Grafana, reducing latency (less than 2 seconds) and enabling the team to remotely monitor signals and diagnose errors in real time.",
+      "Implemented GPS data acquisition firmware as a FreeRTOS thread that parsed NMEA sentences (GGA, GLL, GSA, RMC, VTG, GSV), validated checksums, and packaged results into CAN frames sent over a radio/cellular module, enabling the pit crew to locate the vehicle within 0.5-meter accuracy at a 200ms latency.",
       "Developed a custom steering wheel PCB with CAN bus integration, utilizing interrupt-driven firmware for turn signal capture, eco/power mode selection, and horn activation to improve driver accessibility.",
       "Designed Segger J-Link interfaces for new-generation PCBs, enabling boundary-scan testing, firmware flashing, and real-time debugging of all the team’s custom PCBs.",
       "Debugged hardware/firmware integration issues using J-Link and GDB to trace communication faults across CAN and UART interfaces."
@@ -25,6 +26,7 @@ const resumeExperiences: Experience[] = [
     "id": 2,
     "role": "Firmware Engineer Intern",
     "company": "Verdi",
+    "companyUrl": "https://www.verdi.ag",
     "location": "Vancouver, BC",
     "period": "Jan 2026 - Present",
     "achievements": [

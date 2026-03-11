@@ -99,6 +99,18 @@
   color: var(--muted);
 }
 
+.companyLink {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(143, 171, 190, 0.4);
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.companyLink:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
 .period {
   font-size: 0.82rem;
   color: var(--accent);

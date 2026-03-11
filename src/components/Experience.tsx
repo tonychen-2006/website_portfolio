@@ -19,7 +19,11 @@ export default function Experience() {
               <div>
                 <h3 className={styles.role}>{exp.role}</h3>
                 <p className={styles.meta}>
-                  {exp.company}&nbsp;·&nbsp;{exp.location}
+                  {exp.companyUrl ? (
+                    <a href={exp.companyUrl} target="_blank" rel="noopener noreferrer" className={styles.companyLink}>{exp.company}</a>
+                  ) : (
+                    exp.company
+                  )}&nbsp;·&nbsp;{exp.location}
                 </p>
               </div>
               <span className={styles.period}>{exp.period}</span>

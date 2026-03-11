@@ -4,13 +4,9 @@ export default function Hero() {
   return (
     <section className={styles.hero} id="top">
       <div className={styles.inner}>
-        <div className={styles.text}>
+        <div className={styles.titleBlock}>
           <p className={styles.eyebrow}>Electrical &amp; Computer Engineering — UBC</p>
           <h1 className={styles.title}>Tony Chen</h1>
-          <p className={styles.subtitle}>
-            I'm a UBC ECE student focused on embedded systems, intelligent
-            software, and product-driven engineering projects.
-          </p>
         </div>
         <div className={styles.photoFrame}>
           <img
