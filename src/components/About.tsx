@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./About.module.css";
 import { resumeSkills } from "../data/resumeExperiences";
+import projects from "../data/projects";
 
 const FALLBACK_SKILLS = [
   "C / C++", "Python", "TypeScript", "React",
@@ -8,7 +9,9 @@ const FALLBACK_SKILLS = [
   "Docker", "Git", "MATLAB", "Linux",
 ];
 
-const SKILLS = resumeSkills.length > 0 ? resumeSkills : FALLBACK_SKILLS;
+const projectTools = [...new Set(projects.flatMap((p) => p.tools))];
+const baseSkills = resumeSkills.length > 0 ? resumeSkills : FALLBACK_SKILLS;
+const SKILLS = [...new Set([...baseSkills, ...projectTools])];
 
 function GitHubIcon() {
   return (

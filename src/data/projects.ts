@@ -19,27 +19,6 @@ export interface Project {
 
 const projects: Project[] = [
   {
-    id: 1,
-    title: "Driver Display - Drive State Machine",
-    summary: "Safety-critical drive-state controller for a solar race car HMI.",
-    description: [
-      "Safety-critical FSM controlling → REVERSE <-> PARK <-> DRIVE state transitions, with pre-condition checks (brake hold, motor temp, BMS status) enforced before any transition is accepted.",
-      "CAN bus message parsing from the motor controller and BMS through a custom hardware abstraction layer; outgoing state commands packed as CAN frames and sent to the motor control interface.",
-      "Interrupt-driven peripheral drivers for button inputs, and indicator LEDs, allowing deterministic response times under FreeRTOS.",
-      "Utilizes an Extended Kalman Filter (EKF) program to estimate battery state-of-charge",
-    ],
-    role: "Drive-state machine design and implementation, CAN message parsing, HAL for dashboard peripherals, FreeRTOS task architecture.",
-    tools: ["C", "STM32", "FreeRTOS", "CAN bus", "STM32CubeIDE", "J-Link / GDB"],
-    images: [
-      {
-        src: "/drd.png",
-        alt: "Driver display dashboard on the solar race car",
-      },
-    ],
-    githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/main/firmware/components/drd",
-    category: "design-team",
-  },
-  {
     id: 2,
     title: "Sunlite — Cellular Telemetry Gateway",
     summary: "Raspberry Pi 4B service streaming live solar car CAN telemetry to InfluxDB over LTE/5G.",
@@ -78,6 +57,27 @@ const projects: Project[] = [
       },
     ],
     githubUrl: "https://github.com/UBC-Solar/firmware_v3/tree/master/components/tel",
+    category: "design-team",
+  },
+  {
+    id: 1,
+    title: "Driver Display - Drive State Machine",
+    summary: "Safety-critical drive-state controller for a solar race car HMI.",
+    description: [
+      "Safety-critical FSM controlling → REVERSE <-> PARK <-> DRIVE state transitions, with pre-condition checks (brake hold, motor temp, BMS status) enforced before any transition is accepted.",
+      "CAN bus message parsing from the motor controller and BMS through a custom hardware abstraction layer; outgoing state commands packed as CAN frames and sent to the motor control interface.",
+      "Interrupt-driven peripheral drivers for button inputs, and indicator LEDs, allowing deterministic response times under FreeRTOS.",
+      "Utilizes an Extended Kalman Filter (EKF) program to estimate battery state-of-charge",
+    ],
+    role: "Drive-state machine design and implementation, CAN message parsing, HAL for dashboard peripherals, FreeRTOS task architecture.",
+    tools: ["C", "STM32", "FreeRTOS", "CAN bus", "STM32CubeIDE", "J-Link / GDB"],
+    images: [
+      {
+        src: "/drd.png",
+        alt: "Driver display dashboard on the solar race car",
+      },
+    ],
+    githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/main/firmware/components/drd",
     category: "design-team",
   },
   {
