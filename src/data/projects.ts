@@ -136,8 +136,8 @@ const projects: Project[] = [
     tools: ["C++", "ESP32", "PlatformIO", "Swift", "SwiftUI", "CoreBluetooth", "BLE", "LittleFS", "GoPro HTTP API", "Xcode"],
     images: [
       {
-        src: "https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1200&q=80",
-        alt: "GoPro camera with music and recording equipment",
+        src: "/music_sync.png",
+        alt: "Music Sync app screenshot — GoPro and Apple Music integration",
       },
     ],
     githubUrl: "https://github.com/tonychen-2006/music_sync",

@@ -34,7 +34,7 @@ export default function ProjectCard({ project }: Props) {
       {imgs.length > 0 && (
         <div className={styles.imageWrap}>
           <img
-            src={imgs[idx].src}
+            src={imgs[idx].src.startsWith('/') ? import.meta.env.BASE_URL + imgs[idx].src.slice(1) : imgs[idx].src}
             alt={imgs[idx].alt}
             loading="lazy"
             key={idx}

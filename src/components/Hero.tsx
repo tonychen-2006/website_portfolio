@@ -10,7 +10,7 @@ export default function Hero() {
         </div>
         <div className={styles.photoFrame}>
           <img
-            src="/tony.jpg"
+            src={import.meta.env.BASE_URL + 'tony.jpg'}
             alt="Tony Chen"
             className={styles.photo}
           />

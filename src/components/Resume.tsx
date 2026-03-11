@@ -31,7 +31,7 @@ export default function Resume() {
       <div className={styles.row}>
         <a
           className={styles.link}
-          href="/resume.pdf"
+          href={import.meta.env.BASE_URL + 'resume.pdf'}
           download="tony_chen_resume.pdf"
           aria-label="Download resume PDF"
         >
