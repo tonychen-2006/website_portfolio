@@ -59,3 +59,28 @@
   font-size: 0.92rem;
   padding: 1.5rem 0;
 }
+
+@media (max-width: 600px) {
+  .section {
+    margin-top: 1.2rem;
+    padding: 0.9rem 0.7rem;
+  }
+  .head {
+    margin-bottom: 0.6rem;
+  }
+  .tabs {
+    gap: 0.18rem;
+    margin-bottom: 0.5rem;
+  }
+  .tab {
+    padding: 0.18rem 0.5rem;
+    font-size: 0.92rem;
+  }
+  .projectList {
+    gap: 0.35rem;
+  }
+  .empty {
+    font-size: 1rem;
+    padding: 1rem 0;
+  }
+}
