@@ -7,34 +7,35 @@ import type { Education } from "./education";
 const resumeExperiences: Experience[] = [
   {
     "id": 1,
+    "role": "Firmware Engineer Intern",
+    "company": "Verdi",
+    "companyUrl": "https://www.verdi.ag",
+    "location": "Vancouver, BC",
+    "period": "Jan 2026 – Present",
+    "achievements": [
+      "Led migration of embedded C firmware from FreeRTOS to Zephyr RTOS, re-architecting task scheduling and driver interfaces, adapting CMake build systems and device tree overlays for scalable multi-board support.",
+      "Implemented micro-valve control firmware using GPIO and RTOS threads, enabling automated valve actuation with safe boot, continuous state recovery, and watchdog-supervised real-time operation.",
+      "Integrated and validated LoRa communication (RAK1337), implementing initialization, packet handling, and RTOS-safe asynchronous message processing.",
+      "Designed and implemented a CI/CD pipeline for pull requests using GitHub Actions, triggering builds and unit tests based on board-specific file changes, and enforcing code quality with automated clang-format checks.",
+      "Developed CLI firmware to stress-test LittleFS storage by generating high-volume data streams to test capacity.",
+      "Used logic analyzers used to debug hardware/firmware issues by analyzing signal timing and communication behavior across embedded interfaces."
+    ],
+    "tags": []
+  },
+  {
+    "id": 2,
     "role": "Embedded Systems / Firmware Engineer",
     "company": "UBC Solar Racing (Student Design Team)",
     "companyUrl": "https://ubcsolar.com",
     "location": "Vancouver, BC",
     "period": "Sep 2024 – Present",
     "achievements": [
-      "Led firmware development for the Driver Dashboard subsystem, implementing the vehicle drive-state control logic as a safety-critical state machine while integrating CAN bus messaging and hardware abstraction layers for dashboard inputs and indicators.",
-      "Built a Raspberry Pi–based Python gateway connected to a Netgear hotspot to parse vehicle telemetry data and stream it to InfluxDB/Grafana, reducing latency (less than 2 seconds) and enabling the team to remotely monitor signals and diagnose errors in real time.",
-      "Implemented GPS data acquisition firmware as a FreeRTOS thread that parsed NMEA sentences (GGA, GLL, GSA, RMC, VTG, GSV), validated checksums, and packaged results into CAN frames sent over a radio/cellular module, enabling the pit crew to locate the vehicle within 0.5-meter accuracy at a 200ms latency.",
-      "Developed a custom steering wheel PCB with CAN bus integration, utilizing interrupt-driven firmware for turn signal capture, eco/power mode selection, and horn activation to improve driver accessibility.",
-      "Designed Segger J-Link interfaces for new-generation PCBs, enabling boundary-scan testing, firmware flashing, and real-time debugging of all the team’s custom PCBs.",
-      "Debugged hardware/firmware integration issues using J-Link and GDB to trace communication faults across CAN and UART interfaces."
-    ],
-    "tags": []
-  },
-  {
-    "id": 2,
-    "role": "Firmware Engineer Intern",
-    "company": "Verdi",
-    "companyUrl": "https://www.verdi.ag",
-    "location": "Vancouver, BC",
-    "period": "Jan 2026 - Present",
-    "achievements": [
-      "Worked on migrating and configuring firmware written in C to the Zephyr real-time operating system (RTOS) from FreeRTOS, including adapting board configuration, build system, and application code (CMake, Device Tree overlays).",
-      "Implemented microvalve firmware control to ensure safe boot, restore persisted valve/fault state, and run watchdog-supervised real-time control for valve actuation, sensing, and communications across operating modes.",
-      "Integrated and validated communication with the RAK1337 LoRa radio module, implementing initialization, data handling, and RTOS-safe asynchronous message processing.",
-      "Developed firmware test utilities by implementing a CLI command to stress-test the onboard LittleFS storage, generating datastreams and writing data until filesystem capacity was reached.",
-      "Used logic analyzers to debug hardware/firmware integration issues by capturing and analyzing digital communication signals and timing behavior across embedded interfaces."
+      "Led firmware development for the Driver Dashboard subsystem, implementing vehicle drive-state control logic as a safety-critical state machine while integrating CAN bus messaging and hardware abstraction layers.",
+      "Built a Raspberry Pi–based Python gateway connected to a Netgear hotspot to parse vehicle telemetry data and stream it to InfluxDB/Grafana, reducing latency ( < 2 seconds) and enabling real-time remote monitoring.",
+      "Implemented GPS data acquisition firmware as a FreeRTOS thread that parsed NMEA sentences (GGA, GLL, GSA, RMC, VTG, GSV), validated checksums, and packaged results into CAN frames.",
+      "Developed a custom steering wheel PCB with CAN integration, implementing interrupt-driven GPIO handling for real-time driver input processing.",
+      "Designed Segger J-Link interfaces for new-generation PCBs, enabling firmware flashing, boundary-scan testing, and real-time debugging.",
+      "Debugged hardware/firmware integration issues using J-Link and GDB across CAN and UART communications."
     ],
     "tags": []
   }
@@ -43,27 +44,31 @@ const resumeExperiences: Experience[] = [
 export const resumeEducation: Education[] = [];
 
 export const resumeSkills: string[] = [
-  "C/C++",
+  "C",
+  "C++",
   "Java",
   "Python",
   "SystemVerilog",
-  "FreeRTOS/Zephyr RTOS",
+  "Assembly",
+  "FreeRTOS",
+  "Zephyr RTOS",
   "Embedded Linux",
+  "CMake",
   "Device Drivers",
   "Interrupt Systems",
-  "CAN Bus",
+  "CAN",
   "UART",
   "I2C",
   "DMA",
   "LoRa",
   "BLE",
-  "STM32Cube IDE",
-  "Visual Studio Code",
-  "Git/GitHub",
-  "GDB Altium",
-  "Linux",
-  "Segger J-Link",
-  "CMake"
+  "STM32",
+  "ESP32",
+  "Logic Analyzer",
+  "Oscilloscope",
+  "J-Link",
+  "GDB",
+  "MATLAB"
 ];
 
 export default resumeExperiences;
