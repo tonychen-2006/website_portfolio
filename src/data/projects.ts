@@ -41,6 +41,30 @@ const projects: Project[] = [
   },
   {
     id: 3,
+    title: "Cruise Control Firmware",
+    summary: "FreeRTOS-based cruise control for solar car: closed-loop speed regulation, driver interface, and CAN integration.",
+        description: [
+          "Implements a closed-loop cruise control system for the UBC Solar car, using a proportional-integral (PI) controller to regulate vehicle speed by dynamically adjusting the motor setpoint.",
+          "Performs real-time force calculations for drag, rolling resistance, and hill climbing, using physical vehicle parameters and sensor data to compute net force and required throttle output.",
+          "Integrates a 6-axis IMU (accelerometer/gyroscope), with custom drivers and CAN message handlers for each axis, validating and synchronizing IMU data in real time.",
+          "Fuses IMU and CAN bus speed data using an adaptive Kalman filter for robust pitch and velocity estimation, compensating for sensor noise, vibration, and dropout.",
+          "Implements a stateful driver interface: cruise can be enabled/disabled, target speed set, and all state transitions, overrides, and faults are logged and broadcast over CAN for telemetry and debugging.",
+          "Safety logic includes continuous driver override detection, brake/motor interlocks, and automatic disengagement on sensor, communication, or logic faults, with all error states handled deterministically.",
+          "All logic is implemented as a modular FreeRTOS task, with strict real-time deadline guarantees, robust state management, and comprehensive error handling for embedded safety.",
+        ],
+    role: "Firmware author — cruise control algorithm, CAN integration, driver interface, FreeRTOS task design, and safety logic.",
+    tools: ["C", "STM32", "FreeRTOS", "CAN bus", "PI control", "STM32CubeIDE", "J-Link / GDB"],
+    images: [
+      {
+        src: "/cruise.png",
+        alt: "Cruise control dashboard and firmware integration on UBC Solar car",
+      },
+    ],
+    githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/user/tonychen-2006/cruise_control",
+    category: "design-team",
+  },
+  {
+    id: 4,
     title: "GPS Telemetry Firmware",
     summary: "FreeRTOS firmware thread parsing live GPS data from NMEA sentences and broadcasting positions over CAN.",
     description: [
@@ -81,7 +105,7 @@ const projects: Project[] = [
     category: "design-team",
   },
   {
-    id: 4,
+    id: 5,
     title: "FPGA Tron — Light-Cycle Game",
     summary: "Tron light-cycle game running on an FPGA with VGA output and a lookahead AI opponent.",
     description: [
@@ -102,7 +126,7 @@ const projects: Project[] = [
     category: "course",
   },
   {
-    id: 5,
+    id: 6,
     title: "RISC-V Single-Cycle CPU",
     summary: "A complete RV32I-subset CPU implemented in SystemVerilog and verified on an Intel FPGA.",
     description: [
@@ -123,7 +147,7 @@ const projects: Project[] = [
     category: "course",
   },
   {
-    id: 6,
+    id: 7,
     title: "Music Sync — GoPro × Apple Music Bridge",
     summary: "ESP32 + iOS system that auto-syncs GoPro recordings to Apple Music for frame-perfect video edits.",
     description: [
@@ -144,7 +168,7 @@ const projects: Project[] = [
     category: "personal",
   },
   {
-    id: 7,
+    id: 8,
     title: "Custom Heap Allocator",
     summary: "A from-scratch dynamic memory allocator in C with block splitting, coalescing, and alignment.",
     description: [

@@ -33,9 +33,8 @@ const resumeExperiences: Experience[] = [
       "Led firmware development for the Driver Dashboard subsystem, implementing vehicle drive-state control logic as a safety-critical state machine while integrating CAN bus messaging and hardware abstraction layers.",
       "Built a Raspberry Pi–based Python gateway connected to a Netgear hotspot to parse vehicle telemetry data and stream it to InfluxDB/Grafana, reducing latency ( < 2 seconds) and enabling real-time remote monitoring.",
       "Implemented GPS data acquisition firmware as a FreeRTOS thread that parsed NMEA sentences (GGA, GLL, GSA, RMC, VTG, GSV), validated checksums, and packaged results into CAN frames.",
-      "Developed a custom steering wheel PCB with CAN integration, implementing interrupt-driven GPIO handling for real-time driver input processing.",
-      "Designed Segger J-Link interfaces for new-generation PCBs, enabling firmware flashing, boundary-scan testing, and real-time debugging.",
-      "Debugged hardware/firmware integration issues using J-Link and GDB across CAN and UART communications."
+      "Designed and implemented a FreeRTOS-based cruise control system, using a custom PI controller with real-time force modeling (drag, rolling resistance, hill climbing) for precise speed regulation, fusing IMU and CAN data with a Kalman filter, and ensuring critical safety logic conditions.",
+      "Designed Segger J-Link interfaces for new-generation PCBs, enabling firmware flashing, boundary-scan testing, and real-time debugging."
     ],
     "tags": []
   }
@@ -68,7 +67,7 @@ export const resumeSkills: string[] = [
   "Oscilloscope",
   "J-Link",
   "GDB",
-  "MATLAB"
+  "Makefile"
 ];
 
 export default resumeExperiences;
