@@ -74,7 +74,6 @@ export default function ProjectCard({ project }: Props) {
             <li key={point}>{point}</li>
           ))}
         </ul>
-        <p className={styles.role}>{project.role}</p>
         <div className={styles.tools}>
           {project.tools.map((t) => (
             <span key={t} className={styles.tool}>{t}</span>
