@@ -5,7 +5,7 @@ export default function Hero() {
     <section className={styles.hero} id="top">
       <div className={styles.inner}>
         <div className={styles.titleBlock}>
-          <p className={styles.eyebrow}>Electrical &amp; Computer Engineering — UBC</p>
+          <p className={styles.eyebrow}>ECE @UBC - Embedded Systems and Firmware Developer</p>
           <h1 className={styles.title}>Tony Chen</h1>
         </div>
         <div className={styles.photoFrame}>

@@ -15,7 +15,7 @@ const fallbackEducation: Education[] = [
     institution: "University of British Columbia",
     location: "Vancouver, BC",
     period: "Sep 2024 – May 2028",
-    details: [],
+    details: ["Relevant Coursework: Software Construction, Computing Systems, Algorithms and Data Structures, Circuit Analysis"],
   },
 ];
 

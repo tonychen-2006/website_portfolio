@@ -172,6 +172,37 @@
   border: 1px solid rgba(52, 211, 153, 0.3);
 }
 
+/* Grade bar */
+.gradeBar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.3rem;
+}
+
+.gradeTrack {
+  flex: 1;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.gradeFill {
+  height: 100%;
+  background: var(--accent);
+  transition: width 0.4s ease;
+}
+
+.gradeLabel {
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  color: var(--accent);
+  min-width: 1.6rem;
+  text-align: right;
+  letter-spacing: 0.03em;
+}
+
 @media (max-width: 600px) {
   .card {
     flex-direction: column;

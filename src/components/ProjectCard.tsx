@@ -80,6 +80,19 @@ export default function ProjectCard({ project }: Props) {
             <span key={t} className={styles.tool}>{t}</span>
           ))}
         </div>
+        {project.grade != null && (
+          <div className={styles.gradeBar}>
+            <div className={styles.gradeTrack}>
+              <div
+                className={styles.gradeFill}
+                style={{ width: `${project.grade}%` }}
+              />
+            </div>
+            <span className={styles.gradeLabel}>
+              {project.grade >= 90 ? "A+" : project.grade >= 85 ? "A" : project.grade >= 80 ? "A-" : project.grade >= 76 ? "B+" : project.grade >= 72 ? "B" : project.grade >= 68 ? "B-" : project.grade >= 64 ? "C+" : project.grade >= 60 ? "C" : project.grade >= 55 ? "C-" : project.grade >= 50 ? "D" : "F"}
+            </span>
+          </div>
+        )}
         {project.githubUrl && (
           <div className={styles.repoRow}>
             <a

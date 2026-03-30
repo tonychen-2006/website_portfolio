@@ -10,11 +10,11 @@ export interface Project {
   title: string;
   summary: string;
   description: string[];   // each string = one bullet point
-  role: string;
   tools: string[];
   images?: ProjectImage[];   // multiple → carousel; one → static; omit → no photo
   githubUrl?: string;
   category: ProjectCategory;
+  grade?: number;            // 0-100, shown as a bar with letter grade
 }
 
 const projects: Project[] = [
@@ -28,11 +28,10 @@ const projects: Project[] = [
       "Automated installation via shell scripts that provision the Python venv, dependencies, systemd services, InfluxDB CLI, and Tailscale in a single run on a fresh Raspberry Pi OS image.",
       "Simulation and characterization tooling for validating the pipeline against a YAML-templated CAN message set without physical hardware.",
     ],
-    role: "CAN-to-InfluxDB pipeline, gRPC transport layer, Tailscale remote access setup, installation automation, and simulation tooling.",
     tools: ["Python", "Raspberry Pi 4B", "CAN bus", "DBC", "InfluxDB", "gRPC", "Tailscale", "LTE/5G", "systemd", "Shell"],
     images: [
       {
-        src: "/cellular.jpeg",
+        src: "/projects/sunlite/cellular.jpeg",
         alt: "Sunlite cellular telemetry hardware on the solar race car",
       },
     ],
@@ -52,15 +51,34 @@ const projects: Project[] = [
           "Safety logic includes continuous driver override detection, brake/motor interlocks, and automatic disengagement on sensor, communication, or logic faults, with all error states handled deterministically.",
           "All logic is implemented as a modular FreeRTOS task, with strict real-time deadline guarantees, robust state management, and comprehensive error handling for embedded safety.",
         ],
-    role: "Firmware author — cruise control algorithm, CAN integration, driver interface, FreeRTOS task design, and safety logic.",
     tools: ["C", "STM32", "FreeRTOS", "CAN bus", "PI control", "STM32CubeIDE", "J-Link / GDB"],
     images: [
       {
-        src: "/cruise.png",
+        src: "/projects/cruise-control/cruise.png",
         alt: "Cruise control dashboard and firmware integration on UBC Solar car",
       },
     ],
     githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/user/tonychen-2006/cruise_control",
+    category: "design-team",
+  },
+    {
+    id: 1,
+    title: "Driver Display - Drive State Machine",
+    summary: "Safety-critical drive-state controller for a solar race car HMI.",
+    description: [
+      "Safety-critical FSM controlling → REVERSE <-> PARK <-> DRIVE state transitions, with pre-condition checks (brake hold, motor temp, BMS status) enforced before any transition is accepted.",
+      "CAN bus message parsing from the motor controller and BMS through a custom hardware abstraction layer; outgoing state commands packed as CAN frames and sent to the motor control interface.",
+      "Interrupt-driven peripheral drivers for button inputs, and indicator LEDs, allowing deterministic response times under FreeRTOS.",
+      "Utilizes an Extended Kalman Filter (EKF) program to estimate battery state-of-charge",
+    ],
+    tools: ["C", "STM32", "FreeRTOS", "CAN bus", "STM32CubeIDE", "J-Link / GDB"],
+    images: [
+      {
+        src: "/projects/driver-display/drd.png",
+        alt: "Driver display dashboard on the solar race car",
+      },
+    ],
+    githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/main/firmware/components/drd",
     category: "design-team",
   },
   {
@@ -72,36 +90,14 @@ const projects: Project[] = [
       "Parsed data packaged into CAN frames and transmitted over the solar car's telemetry system, enabling the pit crew to locate the vehicle to within 0.5m at a 200ms update rate.",
       "Task architecture designed within the FreeRTOS scheduler to meet strict real-time deadlines without starving higher-priority tasks.",
     ],
-    role: "Sole firmware author — NMEA parser, checksum validation, CAN frame packing, FreeRTOS task design and integration.",
     tools: ["C", "STM32", "FreeRTOS", "NMEA 0183", "CAN bus", "UART", "J-Link / GDB"],
     images: [
       {
-        src: "/gps.png",
+        src: "/projects/gps-telemetry/gps.png",
         alt: "GPS module mounted on the UBC Solar car PCB",
       },
     ],
     githubUrl: "https://github.com/UBC-Solar/firmware_v3/tree/master/components/tel",
-    category: "design-team",
-  },
-  {
-    id: 1,
-    title: "Driver Display - Drive State Machine",
-    summary: "Safety-critical drive-state controller for a solar race car HMI.",
-    description: [
-      "Safety-critical FSM controlling → REVERSE <-> PARK <-> DRIVE state transitions, with pre-condition checks (brake hold, motor temp, BMS status) enforced before any transition is accepted.",
-      "CAN bus message parsing from the motor controller and BMS through a custom hardware abstraction layer; outgoing state commands packed as CAN frames and sent to the motor control interface.",
-      "Interrupt-driven peripheral drivers for button inputs, and indicator LEDs, allowing deterministic response times under FreeRTOS.",
-      "Utilizes an Extended Kalman Filter (EKF) program to estimate battery state-of-charge",
-    ],
-    role: "Drive-state machine design and implementation, CAN message parsing, HAL for dashboard peripherals, FreeRTOS task architecture.",
-    tools: ["C", "STM32", "FreeRTOS", "CAN bus", "STM32CubeIDE", "J-Link / GDB"],
-    images: [
-      {
-        src: "/drd.png",
-        alt: "Driver display dashboard on the solar race car",
-      },
-    ],
-    githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/main/firmware/components/drd",
     category: "design-team",
   },
   {
@@ -114,16 +110,16 @@ const projects: Project[] = [
       "Lookahead AI opponent, collisions with walls, obstacles, or trails end a round and simultaneous head-on collision scores a draw.",
       "Scores displayed live on 7-segment HEX displays; full-screen colour flash signals the end of a 9-round match.",
     ],
-    role: "Sole developer — game logic, VGA rendering loop, interrupt-driven input, lookahead AI, and cross-compiled build system.",
     tools: ["C", "Nios V (RISC-V)", "Intel DE10-Lite", "VGA", "FPGA", "Makefile"],
     images: [
       {
-        src: "/tron.jpeg",
+        src: "/projects/tron/tron.jpeg",
         alt: "FPGA Tron light-cycle game running on VGA display",
       },
     ],
     githubUrl: "https://github.com/tonychen-2006/fpga_tron_game",
     category: "course",
+    grade: 100
   },
   {
     id: 6,
@@ -135,16 +131,16 @@ const projects: Project[] = [
       "Supports R-type (add, sub, and, or, slt), I-type (lw, addi, andi, ori, slti), S-type (sw), B-type (beq), and J-type (jal) instructions.",
       "DE-board peripherals (LEDs, HEX displays, slide switches) exposed via MMIO at 0xFF200000; correctness verified with a self-checking SystemVerilog testbench and a hand-assembled assembly demo.",
     ],
-    role: "Sole designer — full RTL implementation across all modules (controller, datapath, ALU, regfile, memories), testbench authoring, and assembly-level verification.",
     tools: ["SystemVerilog", "RISC-V Assembly", "ModelSim / QuestaSim", "Intel DE10-Lite", "FPGA"],
     images: [
       {
-        src: "/riscv.jpeg",
+        src: "/projects/riscv-cpu/riscv.jpeg",
         alt: "RISC-V single-cycle CPU block diagram and FPGA board",
       },
     ],
     githubUrl: "https://github.com/tonychen-2006/riscv_cpu_single_cycle",
     category: "course",
+    grade: 100
   },
   {
     id: 7,
@@ -156,11 +152,10 @@ const projects: Project[] = [
       "Song and starting/ending clip events persisted to LittleFS flash, then on-demand Final Cut Pro-compatible XML timeline generation, split into 140-byte BLE chunks for reliable transfer.",
       "iOS app reassembles BLE chunks, reconstructs the full XML, and exports it via the native share sheet for direct import into Final Cut Pro.",
     ],
-    role: "Sole developer — ESP32 C++ firmware (BLE server, GoPro WiFi control, LittleFS event log, XML generation, chunk protocol), iOS Swift app (CoreBluetooth client, Apple Music tracking, XML reassembly, share sheet).",
     tools: ["C++", "ESP32", "PlatformIO", "Swift", "SwiftUI", "CoreBluetooth", "BLE", "LittleFS", "GoPro HTTP API", "Xcode"],
     images: [
       {
-        src: "/music_sync.png",
+        src: "/projects/music-sync/music_sync.png",
         alt: "Music Sync app screenshot — GoPro and Apple Music integration",
       },
     ],
@@ -176,16 +171,16 @@ const projects: Project[] = [
       "Designed a free-list metadata structure (header/footer boundary tags) to enable O(1) coalescing and efficient heap traversal without scanning all allocated blocks.",
       "Enforced 8-byte alignment on all allocations and validated correctness with a heap consistency checker that detects overlapping blocks, invalid pointers, and list invariant violations.",
     ],
-    role: "Sole developer — allocator design, metadata layout, free-list management, alignment enforcement, and heap consistency checker.",
     tools: ["C", "GDB", "Valgrind", "Linux"],
     images: [
       {
-        src: "/malloc.png",
+        src: "/projects/heap-allocator/malloc.png",
         alt: "Custom heap allocator memory block diagram",
       },
     ],
     githubUrl: "https://github.com/tonychen-2006/heap_allocation/tree/main",
     category: "course",
+    grade: 82.22,
   },
 ];
 
