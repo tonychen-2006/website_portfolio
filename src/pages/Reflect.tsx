@@ -288,7 +288,7 @@ export const posts: Post[] = [
         value:
           "\nTimers" +
           "\nThe STM32F103RCTx has a wide range of timer peripherals, each with different capabilities. " +
-          "The timer we actually used on the DRD was TIM4 — configured for periodic interrupt generation to drive consistent timing " +
+          "The timer we actually used on the DRD was TIM4, configured for periodic interrupt generation to drive consistent timing " +
           "for display refresh rates and debouncing button inputs. CubeMX calculates the prescaler and auto-reload values based on " +
           "the system clock frequency, which made it straightforward to get the exact timing interval we needed.",
       },
@@ -346,7 +346,7 @@ export const posts: Post[] = [
         type: "text",
         value:
           "\nMultimedia & Computing" +
-          "\nMultimedia contains peripherals for audio/video interfaces (I2S, SAI) — not used on the DRD since the board has no audio functionality. " +
+          "\nMultimedia contains peripherals for audio/video interfaces (I2S, SAI), not used on the DRD since the board has no audio functionality. " +
           "Computing covers hardware accelerators like the CRC (Cyclic Redundancy Check) calculation unit, which can compute checksums faster than software. " +
           "We didn't enable hardware CRC on the DRD but it can be a useful peripheral for communication-heavy applications.",
       },

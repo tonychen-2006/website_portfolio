@@ -54,8 +54,8 @@ const projects: Project[] = [
     tools: ["C", "STM32", "FreeRTOS", "CAN bus", "PI control", "STM32CubeIDE", "J-Link / GDB"],
     images: [
       {
-        src: "/projects/cruise-control/cruise.png",
-        alt: "Cruise control dashboard and firmware integration on UBC Solar car",
+        src: "/projects/cruise-control/cruise_control.mp4",
+        alt: "Cruise control simulation demo",
       },
     ],
     githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/user/tonychen-2006/cruise_control",
@@ -76,6 +76,14 @@ const projects: Project[] = [
       {
         src: "/projects/driver-display/drd.png",
         alt: "Driver display dashboard on the solar race car",
+      },
+      {
+        src: "/projects/driver-display/drd1.png",
+        alt: "Driver display interface view",
+      },
+      {
+        src: "/projects/driver-display/drd2.png",
+        alt: "Driver display hardware integration",
       },
     ],
     githubUrl: "https://github.com/UBC-Solar/firmware_v4/tree/main/firmware/components/drd",

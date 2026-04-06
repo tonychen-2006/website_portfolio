@@ -26,23 +26,46 @@ export default function ProjectCard({ project }: Props) {
   const [idx, setIdx] = useState(0);
   const multi = imgs.length > 1;
 
+  const [lightbox, setLightbox] = useState(false);
+
   const prev = () => setIdx((i) => (i - 1 + imgs.length) % imgs.length);
   const next = () => setIdx((i) => (i + 1) % imgs.length);
+
+  const isVideo = (src: string) => /\.(mp4|webm|mov)$/i.test(src);
+  const resolveSrc = (src: string) =>
+    src.startsWith('/') ? import.meta.env.BASE_URL + src.slice(1) : src;
 
   return (
     <article className={styles.card}>
       {imgs.length > 0 && (
-        <div className={styles.imageWrap}>
-          <img
-            src={imgs[idx].src.startsWith('/') ? import.meta.env.BASE_URL + imgs[idx].src.slice(1) : imgs[idx].src}
-            alt={imgs[idx].alt}
-            loading="lazy"
-            key={idx}
-            onError={(e) => {
-              const wrap = (e.currentTarget as HTMLImageElement).closest(`.${styles.imageWrap}`) as HTMLElement | null;
-              if (wrap) wrap.style.display = "none";
-            }}
-          />
+        <div className={styles.imageWrap} onClick={() => setLightbox(true)} style={{ cursor: 'pointer' }}>
+          {isVideo(imgs[idx].src) ? (
+            <>
+              <video
+                src={resolveSrc(imgs[idx].src)}
+                muted
+                playsInline
+                key={idx}
+                className={styles.video}
+              />
+              <div className={styles.playOverlay} aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor" width="48" height="48">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </div>
+            </>
+          ) : (
+            <img
+              src={resolveSrc(imgs[idx].src)}
+              alt={imgs[idx].alt}
+              loading="lazy"
+              key={idx}
+              onError={(e) => {
+                const wrap = (e.currentTarget as HTMLImageElement).closest(`.${styles.imageWrap}`) as HTMLElement | null;
+                if (wrap) wrap.style.display = "none";
+              }}
+            />
+          )}
           {multi && (
             <div className={styles.carouselControls}>
               <button onClick={prev} aria-label="Previous image" className={styles.carouselBtn}>
@@ -106,6 +129,46 @@ export default function ProjectCard({ project }: Props) {
           </div>
         )}
       </div>
+
+      {lightbox && (
+        <div className={styles.lightbox} onClick={() => setLightbox(false)}>
+          <button className={styles.lightboxClose} onClick={() => setLightbox(false)} aria-label="Close">×</button>
+          <div className={styles.lightboxContent} onClick={(e) => e.stopPropagation()}>
+            {isVideo(imgs[idx].src) ? (
+              <video
+                src={resolveSrc(imgs[idx].src)}
+                controls
+                controlsList="nofullscreen"
+                autoPlay
+                muted
+                playsInline
+                className={styles.lightboxVideo}
+              />
+            ) : (
+              <img
+                src={resolveSrc(imgs[idx].src)}
+                alt={imgs[idx].alt}
+                className={styles.lightboxImg}
+              />
+            )}
+            {multi && (
+              <div className={styles.lightboxNav}>
+                <button onClick={prev} className={styles.carouselBtn}>&#8592;</button>
+                <span className={styles.carouselDots}>
+                  {imgs.map((_, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setIdx(i)}
+                      className={`${styles.dot} ${i === idx ? styles.dotActive : ""}`}
+                    />
+                  ))}
+                </span>
+                <button onClick={next} className={styles.carouselBtn}>&#8594;</button>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </article>
   );
 }

@@ -30,6 +30,29 @@
   display: block;
 }
 
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.playOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.85);
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.25);
+  transition: background 0.15s;
+}
+
+.imageWrap:hover .playOverlay {
+  background: rgba(0, 0, 0, 0.1);
+}
+
 .carouselControls {
   position: absolute;
   bottom: 0.4rem;
@@ -201,6 +224,67 @@
   min-width: 1.6rem;
   text-align: right;
   letter-spacing: 0.03em;
+}
+
+/* Lightbox overlay */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.lightboxClose {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  color: var(--text);
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 1001;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.lightboxClose:hover {
+  opacity: 1;
+}
+
+.lightboxContent {
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  max-width: 80vw;
+  max-height: 85vh;
+}
+
+.lightboxImg {
+  max-width: 80vw;
+  max-height: 80vh;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.lightboxVideo {
+  max-width: 80vw;
+  max-height: 80vh;
+  border-radius: 4px;
+}
+
+.lightboxNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
 }
 
 @media (max-width: 600px) {
