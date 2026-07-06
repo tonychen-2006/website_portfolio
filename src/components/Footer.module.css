@@ -1,12 +1,12 @@
 .footer {
   position: relative;
   z-index: 1;
-  width: min(1080px, 92vw);
+  width: min(1180px, 92vw);
   margin: 2.5rem auto 2rem;
-  padding: 1.1rem 1.6rem;
-  border: 1px solid var(--border);
+  padding: 1.2rem 0 0;
+  border-top: 1px solid rgba(244, 247, 249, 0.1);
   border-radius: 0;
-  background: var(--bg-block);
+  background: transparent;
 }
 
 .inner {
@@ -28,8 +28,8 @@
   gap: 0.45rem;
   padding: 0.4rem 0.95rem;
   border-radius: 0;
-  border: 1px solid var(--border);
-  background: #0a1118;
+  border: 1px solid rgba(244, 247, 249, 0.09);
+  background: rgba(255, 255, 255, 0.025);
   color: var(--muted);
   text-decoration: none;
   font-size: 0.55rem;
@@ -40,6 +40,6 @@
 
 .repoLink:hover {
   color: var(--text);
-  border-color: var(--accent);
-  background: rgba(52, 211, 153, 0.08);
+  border-color: rgba(244, 247, 249, 0.32);
+  background: rgba(244, 247, 249, 0.055);
 }

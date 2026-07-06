@@ -1,17 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Share+Tech+Mono&display=swap");
 
 :root {
-  --bg:          #0a0f12;
-  --bg-soft:     #111a20;
-  --bg-block:    #0e161c;
-  --text:        #ebf2f7;
-  --muted:       #8fabbe;
-  --accent:      #34d399;
-  --accent-soft: #1c6e50;
-  --border:      #243040;
-  --shadow:      rgba(0, 0, 0, 0.48);
-  --font-head:   "Press Start 2P", monospace;
+  --bg:          #050608;
+  --bg-soft:     #090d10;
+  --bg-block:    #0b0f12;
+  --text:        #f4f7f9;
+  --muted:       #919aa3;
+  --muted-soft:  #68727c;
+  --accent:      #f4f7f9;
+  --accent-soft: #30343a;
+  --border:      #202830;
+  --shadow:      rgba(0, 0, 0, 0.62);
+  --font-head:   "Share Tech Mono", monospace;
   --font-body:   "Share Tech Mono", monospace;
+  --font-copy:   "Share Tech Mono", monospace;
+  --font-pixel:  "Press Start 2P", monospace;
 }
 
 *, *::before, *::after {
@@ -23,21 +26,47 @@ html, body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
   font-size: 1rem;
-  line-height: 1.7;
+  line-height: 1.6;
   min-height: 100vh;
-  -webkit-font-smoothing: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   image-rendering: pixelated;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.014) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+img,
+video {
+  image-rendering: auto;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+[id] {
+  scroll-margin-top: 5.5rem;
 }
 
 h1, h2, h3, h4 {
   font-family: var(--font-head);
-  letter-spacing: 0.02em;
-  line-height: 1.6;
+  letter-spacing: 0.015em;
+  line-height: 1.25;
 }
 
 h3 {
@@ -53,10 +82,12 @@ h2 {
   display: flex;
   align-items: center;
   gap: 0.8rem;
-  font-size: 1rem;
+  font-size: 1.28rem;
   margin: 0 0 1.6rem;
   padding-bottom: 0.8rem;
-  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  border-bottom: 1px solid rgba(244, 247, 249, 0.08);
+  text-transform: uppercase;
 }
 
 h2::before {
@@ -74,7 +105,7 @@ h2::before {
 .main-content {
   position: relative;
   z-index: 1;
-  width: min(1080px, 92vw);
+  width: min(1180px, 92vw);
   margin: 0 auto;
   padding-bottom: 4rem;
 }

@@ -1,9 +1,9 @@
 .section {
-  margin-top: 2.5rem;
-  padding: 1.6rem 1.8rem;
-  border: 1px solid var(--border);
+  margin-top: 1.4rem;
+  padding: 1.6rem 0 0;
+  border-top: 1px solid rgba(244, 247, 249, 0.1);
   border-radius: 0;
-  background: var(--bg-block);
+  background: transparent;
 }
 
 .text {
@@ -24,22 +24,24 @@
   gap: 0.5rem;
   padding: 0.72rem 1.25rem;
   border-radius: 0;
-  background: var(--accent);
-  color: #fff;
+  border: 1px solid rgba(244, 247, 249, 0.32);
+  background: rgba(244, 247, 249, 0.055);
+  color: var(--text);
   font-weight: 600;
   font-size: 0.95rem;
   text-decoration: none;
-  box-shadow: 0 8px 22px rgba(14, 63, 48, 0.4);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
 .link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(14, 63, 48, 0.55);
+  border-color: rgba(244, 247, 249, 0.48);
+  background: rgba(244, 247, 249, 0.08);
 }
 
 .placeholder {
   font-size: 0.78rem;
-  color: rgba(255, 193, 70, 0.7);
+  color: rgba(244, 247, 249, 0.55);
   margin: 0;
 }
