@@ -14,7 +14,6 @@ export interface Project {
   images?: ProjectImage[];   // multiple → carousel; one → static; omit → no photo
   githubUrl?: string;
   category: ProjectCategory;
-  grade?: number;            // 0-100, shown as a bar with letter grade
 }
 
 const projects: Project[] = [
@@ -127,7 +126,6 @@ const projects: Project[] = [
     ],
     githubUrl: "https://github.com/tonychen-2006/fpga_tron_game",
     category: "course",
-    grade: 100
   },
   {
     id: 6,
@@ -148,7 +146,6 @@ const projects: Project[] = [
     ],
     githubUrl: "https://github.com/tonychen-2006/riscv_cpu_single_cycle",
     category: "course",
-    grade: 100
   },
   {
     id: 7,
@@ -188,7 +185,6 @@ const projects: Project[] = [
     ],
     githubUrl: "https://github.com/tonychen-2006/heap_allocation/tree/main",
     category: "course",
-    grade: 82.22,
   },
 ];
 

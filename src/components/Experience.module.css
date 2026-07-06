@@ -1,9 +1,9 @@
 .section {
   margin-top: 2.5rem;
-  padding: 2rem 1.8rem;
-  border: 1px solid var(--border);
+  padding: 2.4rem 0 0;
+  border-top: 1px solid rgba(244, 247, 249, 0.1);
   border-radius: 0;
-  background: var(--bg-block);
+  background: transparent;
 }
 
 .sectionHead {
@@ -29,15 +29,15 @@
 }
 
 .badgeParsed {
-  background: rgba(52, 211, 153, 0.1);
+  background: rgba(244, 247, 249, 0.055);
   color: var(--accent);
-  border-color: rgba(52, 211, 153, 0.25);
+  border-color: rgba(244, 247, 249, 0.18);
 }
 
 .badgeFallback {
-  background: rgba(251, 191, 36, 0.08);
-  color: #fbbf24;
-  border-color: rgba(251, 191, 36, 0.22);
+  background: rgba(244, 247, 249, 0.055);
+  color: var(--muted);
+  border-color: rgba(244, 247, 249, 0.16);
 }
 
 .timeline {
@@ -53,7 +53,7 @@
   top: 0.55rem;
   bottom: 0;
   width: 1px;
-  background: var(--accent);
+  background: rgba(244, 247, 249, 0.32);
 }
 
 .entry {
@@ -108,7 +108,7 @@
 
 .companyLink:hover {
   color: var(--accent);
-  border-color: var(--accent);
+  border-color: rgba(244, 247, 249, 0.32);
 }
 
 .period {
@@ -116,9 +116,9 @@
   color: var(--accent);
   white-space: nowrap;
   padding: 0.2rem 0.65rem;
-  border: 1px solid rgba(52, 211, 153, 0.3);
+  border: 1px solid rgba(244, 247, 249, 0.22);
   border-radius: 0;
-  background: rgba(52, 211, 153, 0.07);
+  background: rgba(244, 247, 249, 0.045);
   align-self: flex-start;
   flex-shrink: 0;
   font-family: var(--font-body);
@@ -149,8 +149,8 @@
   font-size: 0.82rem;
   padding: 0.2rem 0.6rem;
   border-radius: 0;
-  background: rgba(52, 211, 153, 0.09);
+  background: rgba(255, 255, 255, 0.026);
   color: var(--accent);
-  border: 1px solid rgba(52, 211, 153, 0.22);
+  border: 1px solid rgba(244, 247, 249, 0.16);
   font-family: var(--font-body);
 }

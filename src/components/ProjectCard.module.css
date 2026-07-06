@@ -1,16 +1,17 @@
 .card {
   display: flex;
   flex-direction: row;
-  border: 1px solid var(--border);
-  border-left: 3px solid var(--accent);
-  background: var(--bg-block);
+  border: 0;
+  border-top: 1px solid rgba(244, 247, 249, 0.09);
+  background: transparent;
   border-radius: 0;
-  overflow: hidden;
-  transition: background 0.18s;
+  overflow: visible;
+  padding: 1.25rem 0;
+  transition: border-color 0.18s;
 }
 
 .card:hover {
-  background: #131f28;
+  border-color: rgba(244, 247, 249, 0.14);
 }
 
 /* Left thumbnail */
@@ -19,7 +20,8 @@
   width: 260px;
   flex-shrink: 0;
   overflow: hidden;
-  background: #0c1218;
+  background: #06080a;
+  border: 1px solid rgba(244, 247, 249, 0.08);
   min-height: 200px;
 }
 
@@ -28,6 +30,8 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(1.04) contrast(1.02);
+  image-rendering: auto;
 }
 
 .video {
@@ -35,6 +39,8 @@
   height: 100%;
   object-fit: cover;
   display: block;
+  filter: saturate(1.04) contrast(1.02);
+  image-rendering: auto;
 }
 
 .playOverlay {
@@ -82,8 +88,8 @@
 }
 
 .carouselBtn:hover {
-  background: rgba(52, 211, 153, 0.2);
-  border-color: var(--accent);
+  background: rgba(244, 247, 249, 0.1);
+  border-color: rgba(244, 247, 249, 0.32);
 }
 
 .carouselDots {
@@ -110,7 +116,7 @@
 /* Right content */
 .content {
   flex: 1;
-  padding: 0.9rem 1.1rem;
+  padding: 0.2rem 0 0.2rem 1.3rem;
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
@@ -127,9 +133,10 @@
 .title {
   margin: 0;
   font-family: var(--font-head);
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: var(--text);
+  letter-spacing: 0;
 }
 
 .repoRow {
@@ -147,7 +154,7 @@
   font-size: 0.6rem;
   color: var(--muted);
   text-decoration: none;
-  border: 1px solid var(--border);
+  border: 1px solid rgba(244, 247, 249, 0.1);
   padding: 0.3rem 0.65rem;
   border-radius: 0;
   transition: color 0.15s, border-color 0.15s, background 0.15s;
@@ -156,8 +163,8 @@
 
 .repoBtn:hover {
   color: var(--accent);
-  border-color: var(--accent);
-  background: rgba(52, 211, 153, 0.06);
+  border-color: rgba(244, 247, 249, 0.32);
+  background: rgba(244, 247, 249, 0.045);
 }
 
 .description {
@@ -190,40 +197,9 @@
   font-size: 0.72rem;
   padding: 0.1rem 0.45rem;
   border-radius: 0;
-  background: rgba(52, 211, 153, 0.07);
-  color: var(--accent);
-  border: 1px solid rgba(52, 211, 153, 0.3);
-}
-
-/* Grade bar */
-.gradeBar {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 0.3rem;
-}
-
-.gradeTrack {
-  flex: 1;
-  height: 6px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  overflow: hidden;
-}
-
-.gradeFill {
-  height: 100%;
-  background: var(--accent);
-  transition: width 0.4s ease;
-}
-
-.gradeLabel {
-  font-family: var(--font-head);
-  font-size: 0.7rem;
-  color: var(--accent);
-  min-width: 1.6rem;
-  text-align: right;
-  letter-spacing: 0.03em;
+  background: rgba(255, 255, 255, 0.026);
+  color: #cbd3d8;
+  border: 1px solid rgba(244, 247, 249, 0.09);
 }
 
 /* Lightbox overlay */
@@ -290,8 +266,7 @@
 @media (max-width: 600px) {
   .card {
     flex-direction: column;
-    padding: 0.7rem 0.5rem;
-    border-left: 3px solid var(--accent);
+    padding: 1rem 0;
     border-radius: 0;
   }
   .imageWrap {
@@ -300,7 +275,7 @@
     margin-bottom: 0.7rem;
   }
   .content {
-    padding: 0.5rem 0.2rem;
+    padding: 0.5rem 0;
     gap: 0.18rem;
   }
   .titleRow {

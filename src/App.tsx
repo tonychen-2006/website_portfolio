@@ -14,11 +14,11 @@ function Home() {
   return (
     <main className="main-content">
       <Hero />
-      <About />
-      <Education />
       <Experience />
       <Resume />
+      <Education />
       <Projects />
+      <About />
     </main>
   );
 }

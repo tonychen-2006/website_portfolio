@@ -80,6 +80,7 @@ for (let p = 1; p <= pdf.numPages; p++) {
 const COMPANY_URL_MAP = [
   { match: 'ubc solar',  url: 'https://ubcsolar.com'           },
   { match: 'verdi',      url: 'https://www.verdi.ag'           },
+  { match: 'eim',        url: 'https://eimtechnology.com'      },
 ];
 
 // Return the URL whose keyword appears in the company name (case-insensitive).
@@ -182,7 +183,7 @@ while (i < section.length) {
     }
 
     const companyUrl = findCompanyUrl(company || '');
-    results.push({
+    const entry = {
       id: results.length + 1,
       role:     role     || 'Role',
       company:  company  || 'Company',
@@ -191,7 +192,14 @@ while (i < section.length) {
       period,
       achievements,
       tags: [],
-    });
+    };
+
+    if (entry.company === 'EIM' && entry.location.startsWith('Technologies ')) {
+      entry.company = 'EIM Technologies';
+      entry.location = entry.location.replace(/^Technologies\s+/, '');
+    }
+
+    results.push(entry);
     continue;
   }
 

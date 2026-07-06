@@ -7,34 +7,47 @@ import type { Education } from "./education";
 const resumeExperiences: Experience[] = [
   {
     "id": 1,
-    "role": "Firmware Engineer Intern",
+    "role": "Firmware Developer Intern",
     "company": "Verdi",
     "companyUrl": "https://www.verdi.ag",
     "location": "Vancouver, BC",
-    "period": "Jan 2026 – Present",
+    "period": "Jan 2026 – Apr 2026",
     "achievements": [
       "Led migration of embedded C firmware from FreeRTOS to Zephyr RTOS, re-architecting task scheduling and driver interfaces, adapting CMake build systems and device tree overlays for scalable multi-board support.",
       "Implemented micro-valve control firmware using GPIO and RTOS threads, enabling automated valve actuation with safe boot, continuous state recovery, and watchdog-supervised real-time operation.",
       "Integrated and validated LoRa communication (RAK1337), implementing initialization, packet handling, and RTOS-safe asynchronous message processing.",
-      "Designed and implemented a CI/CD pipeline for pull requests using GitHub Actions, triggering builds and unit tests based on board-specific file changes, and enforcing code quality with automated clang-format checks.",
-      "Developed CLI firmware to stress-test LittleFS storage by generating high-volume data streams to test capacity.",
-      "Used logic analyzers used to debug hardware/firmware issues by analyzing signal timing and communication behavior across embedded interfaces."
+      "Designed and implemented a CI/CD pipeline for pull requests using GitHub Actions, triggering builds and unit tests based on board-specific file changes, and enforcing code quality with automated clang-format checks. capacity."
     ],
     "tags": []
   },
   {
     "id": 2,
-    "role": "Embedded Systems / Firmware Engineer",
+    "role": "Embedded Systems Engineer Intern",
+    "company": "EIM Technologies",
+    "companyUrl": "https://eimtechnology.com",
+    "location": "Richmond, BC",
+    "period": "May 2026 – Aug 2026",
+    "achievements": [
+      "Developing STM32 firmware for a real-time audio DSP platform, implementing AUX/ADC signal acquisition, DMA circular buffering, FFT spectrum analysis, and FIR/IIR digital filtering.",
+      "Designed hardware and firmware workflows for analog input conditioning, sampling-rate control, SPI display visualization, and audio signal reconstruction.",
+      "Prototyping a custom STM32-based logic analyzer with high-speed GPIO sampling, trigger-based capture, times- tamped signal recording, and UART/I2C/SPI debugging support."
+    ],
+    "tags": []
+  },
+  {
+    "id": 3,
+    "role": "Senior Embedded Systems Designer",
     "company": "UBC Solar Racing (Student Design Team)",
     "companyUrl": "https://ubcsolar.com",
     "location": "Vancouver, BC",
     "period": "Sep 2024 – Present",
     "achievements": [
       "Led firmware development for the Driver Dashboard subsystem, implementing vehicle drive-state control logic as a safety-critical state machine while integrating CAN bus messaging and hardware abstraction layers.",
-      "Built a Raspberry Pi–based Python gateway connected to a Netgear hotspot to parse vehicle telemetry data and stream it to InfluxDB/Grafana, reducing latency ( < 2 seconds) and enabling real-time remote monitoring.",
+      "Built a Raspberry Pi-based Python gateway connected to a Netgear hotspot to parse vehicle telemetry data and stream it to InfluxDB/Grafana, reducing latency ( < 2 seconds) and enabling real-time remote monitoring.",
+      "Implemented a common STM32 CAN bootloader prototype for vehicle boards, supporting application jump logic, firmware image transfer, CRC validation, flash programming, and Raspberry Pi-based .bin deployment tooling.",
+      "Developed Telemetry Board PCB firmware supporting cellular and radio communication paths, packaging CAN messages with timestamps, CAN IDs, payload length, and UART framing while implementing whitelist-based filtering and rate-limiting to reduce unnecessary bandwidth.",
       "Implemented GPS data acquisition firmware as a FreeRTOS thread that parsed NMEA sentences (GGA, GLL, GSA, RMC, VTG, GSV), validated checksums, and packaged results into CAN frames.",
-      "Designed and implemented a FreeRTOS-based cruise control system, using a custom PI controller with real-time force modeling (drag, rolling resistance, hill climbing) for precise speed regulation, fusing IMU and CAN data with a Kalman filter, and ensuring critical safety logic conditions.",
-      "Designed Segger J-Link interfaces for new-generation PCBs, enabling firmware flashing, boundary-scan testing, and real-time debugging."
+      "Designed and implemented a FreeRTOS-based cruise control system, using a custom PI controller with real-time force modeling (drag, rolling resistance, hill climbing) for precise speed regulation, fusing IMU and CAN data with a Kalman filter, and ensuring critical safety logic conditions."
     ],
     "tags": []
   }
@@ -49,6 +62,8 @@ export const resumeSkills: string[] = [
   "Python",
   "SystemVerilog",
   "Assembly",
+  "MATLAB",
+  "Simulink",
   "FreeRTOS",
   "Zephyr RTOS",
   "Embedded Linux",

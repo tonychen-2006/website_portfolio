@@ -1,4 +1,4 @@
-import { useState, type ReactNode } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Reflect.module.css";
 
@@ -692,6 +692,10 @@ export default function Reflect() {
   const [lightbox, setLightbox] = useState<string | null>(null);
   const filtered =
     active === "all" ? posts : posts.filter((p) => p.category === active);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   const toggle = (slug: string) =>
     setExpanded((prev) => {

@@ -35,7 +35,7 @@
   font-size: clamp(0.9rem, 2vw, 1.3rem);
   line-height: 1.6;
   color: var(--accent);
-  text-shadow: 2px 2px 0 #1a6644, 3px 3px 0 #0d3322;
+  text-shadow: 2px 2px 0 #5d646b, 3px 3px 0 #24282d;
   display: block;
 }
 
@@ -112,7 +112,7 @@
 }
 
 .card:hover {
-  background: #131f28;
+  background: #111418;
 }
 
 .date {
@@ -135,9 +135,9 @@
   letter-spacing: 0.08em;
   padding: 0.15rem 0.55rem;
   border-radius: 0;
-  background: rgba(52, 211, 153, 0.09);
+  background: rgba(244, 247, 249, 0.055);
   color: var(--accent);
-  border: 1px solid rgba(52, 211, 153, 0.3);
+  border: 1px solid rgba(244, 247, 249, 0.22);
 }
 
 .tabs {
@@ -161,13 +161,13 @@
 
 .tab:hover {
   color: var(--text);
-  border-color: rgba(52, 211, 153, 0.35);
+  border-color: rgba(244, 247, 249, 0.26);
 }
 
 .tabActive {
-  background: rgba(52, 211, 153, 0.1);
+  background: rgba(244, 247, 249, 0.065);
   color: var(--accent);
-  border-color: rgba(52, 211, 153, 0.4);
+  border-color: rgba(244, 247, 249, 0.32);
 }
 
 .empty {
