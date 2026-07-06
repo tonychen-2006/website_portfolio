@@ -3,6 +3,9 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "engines": {
+    "node": ">=22.13.0"
+  },
   "scripts": {
     "parse-resume": "node scripts/parse-resume.mjs",
     "predev": "node scripts/parse-resume.mjs",

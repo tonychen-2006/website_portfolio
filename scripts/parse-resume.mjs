@@ -11,6 +11,11 @@ import { readFileSync, writeFileSync, existsSync, readdirSync } from 'fs';
 import { pathToFileURL, fileURLToPath } from 'url';
 import { join, resolve, dirname } from 'path';
 
+if (process.env.CF_PAGES) {
+  console.log('[parse-resume] Skipping PDF parsing on Cloudflare Pages; using committed generated data.');
+  process.exit(0);
+}
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const rootDir   = resolve(__dirname, '..');
 const publicDir = join(rootDir, 'public');
