@@ -7,7 +7,6 @@ export default function About() {
       <h2>Blog</h2>
       <div className={styles.blogWrap}>
         <header className={styles.blogHeader}>
-          <p className={styles.eyebrow}>Blog Posts</p>
           <h3 className={styles.blogTitle}>Writing</h3>
           <p className={styles.blogDesc}>
             Notes on engineering, learning, and aspirations!
