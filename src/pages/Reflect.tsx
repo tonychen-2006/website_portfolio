@@ -1,5 +1,5 @@
-import { useEffect, useState, type ReactNode } from "react";
-import { Link } from "react-router-dom";
+import { useState, type ReactNode } from "react";
+import { Navigate } from "react-router-dom";
 import styles from "./Reflect.module.css";
 
 type Category = "all" | "academics" | "personal" | "projects" | "work";
@@ -8,7 +8,7 @@ type ContentBlock =
   | { type: "text"; value: string }
   | { type: "image"; src: string; alt?: string; description?: string };
 
-export interface Post {
+interface Post {
   slug: string;
   date: string;
   title: string;
@@ -24,7 +24,7 @@ const TABS: { label: string; value: Category }[] = [
   { label: "Work", value: "work" },
 ];
 
-export const posts: Post[] = [
+const posts: Post[] = [
   {
     slug: "pid-controller-logic-cruise-control",
     date: "March 2026",
@@ -686,38 +686,26 @@ function renderText(text: string): ReactNode[] {
   });
 }
 
-export default function Reflect() {
+export function BlogFeed() {
   const [active, setActive] = useState<Category>("all");
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
   const [lightbox, setLightbox] = useState<string | null>(null);
   const filtered =
     active === "all" ? posts : posts.filter((p) => p.category === active);
 
-  useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, []);
-
   const toggle = (slug: string) =>
     setExpanded((prev) => {
       const next = new Set(prev);
-      next.has(slug) ? next.delete(slug) : next.add(slug);
+      if (next.has(slug)) {
+        next.delete(slug);
+      } else {
+        next.add(slug);
+      }
       return next;
     });
 
   return (
-    <main className={`main-content ${styles.page}`}>
-      <Link to="/" className={styles.back}>
-        ← Back
-      </Link>
-
-      <header className={styles.header}>
-        <p className={styles.eyebrow}>Blog Posts</p>
-        <h1 className={styles.title}>Writing</h1>
-        <p className={styles.subtitle}>
-          Notes on engineering, learning, and aspirations!
-        </p>
-      </header>
-
+    <>
       <div className={styles.tabs}>
         {TABS.map((tab) => (
           <button
@@ -835,6 +823,10 @@ export default function Reflect() {
           <img src={lightbox} alt="" className={styles.lightboxImg} />
         </div>
       )}
-    </main>
+    </>
   );
+}
+
+export default function Reflect() {
+  return <Navigate to={{ pathname: "/", hash: "#blog" }} replace />;
 }

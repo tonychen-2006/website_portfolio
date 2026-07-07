@@ -1,4 +1,5 @@
-import { Routes, Route } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
@@ -23,11 +24,28 @@ function Home() {
   );
 }
 
+function ScrollToHash() {
+  const { hash } = useLocation();
+
+  useEffect(() => {
+    if (!hash) return;
+
+    const frame = requestAnimationFrame(() => {
+      document.getElementById(hash.slice(1))?.scrollIntoView();
+    });
+
+    return () => cancelAnimationFrame(frame);
+  }, [hash]);
+
+  return null;
+}
+
 function App() {
   return (
     <>
       <div className="bg-glow" aria-hidden="true" />
       <Header />
+      <ScrollToHash />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/reflect" element={<ReflectPage />} />

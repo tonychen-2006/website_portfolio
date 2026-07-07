@@ -13,76 +13,53 @@
   color: var(--muted);
 }
 
-.skillsLabel {
-  font-size: 0.74rem;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
-  color: var(--text);
-  margin: 0 0 0.7rem;
-}
-
-.more {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-top: 1.4rem;
-  padding: 0.55rem 1.1rem;
-  border-radius: 0;
-  border: 1px solid rgba(244, 247, 249, 0.32);
-  background: transparent;
-  color: var(--accent);
-  text-decoration: none;
-  font-size: 0.65rem;
-  font-family: var(--font-head);
-  letter-spacing: 0.04em;
-  transition: background 0.15s, color 0.15s;
-}
-
-.more:hover {
-  background: rgba(244, 247, 249, 0.065);
-  color: var(--text);
-}
-
 .blogWrap {
   margin-top: 1.4rem;
 }
 
-.blogList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
+.blogHeader {
+  margin-bottom: 2rem;
 }
 
-.blogDesc {
-  margin: 0 0 0.7rem;
-  color: var(--muted);
-  font-size: 0.88rem;
-  font-family: var(--font-copy);
-  line-height: 1.65;
-}
-
-.blogItem {
-  display: flex;
-  align-items: baseline;
-  gap: 0.8rem;
-  font-size: 0.84rem;
-  color: var(--muted);
-}
-
-.blogDate {
-  flex-shrink: 0;
-  font-size: 0.72rem;
+.eyebrow {
+  font-size: 0.55rem;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.14em;
   color: var(--accent);
-  opacity: 0.7;
-  min-width: 7.5rem;
+  margin: 0 0 1.2rem;
+  font-family: var(--font-head);
 }
 
 .blogTitle {
-  color: var(--text);
+  margin: 0;
+  font-family: var(--font-head);
+  font-size: clamp(0.9rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  color: var(--accent);
+  text-shadow: 2px 2px 0 #5d646b, 3px 3px 0 #24282d;
+  display: block;
+}
+
+.about .blogDesc {
+  max-width: 68ch;
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 0.92rem;
   font-family: var(--font-body);
+  line-height: 1.65;
+}
+
+@media (max-width: 600px) {
+  .blogHeader {
+    margin-bottom: 1.2rem;
+  }
+
+  .blogTitle {
+    font-size: 1.05rem;
+  }
+
+  .about .blogDesc {
+    max-width: 100%;
+    font-size: 0.92rem;
+  }
 }
