@@ -148,6 +148,26 @@ const projects: Project[] = [
     category: "course",
   },
   {
+    id: 9,
+    title: "FPGA GPU — DE1-SoC Graphics Engine",
+    summary: "Custom FPGA graphics engine with VGA output, an ARM Linux/Ethernet command path, and a Quake framebuffer demo.",
+    description: [
+      "Built a command-driven FPGA renderer with 8-bit indexed colour, a 256-colour palette, and double-buffered on-chip framebuffers; supports 320×240 and centered 320×200 content on 640×480 VGA with presentation synchronized to vertical blanking.",
+      "Implemented clear, pixel, packed pixel-block, filled-rectangle, Bresenham-line, and flat filled-triangle commands through a versioned 32-bit command stream.",
+      "Integrated dual Avalon-MM command/status windows with the DE1-SoC's ARM Linux host, a validated TCP receiver daemon, and a portable C SDK; verified full-frame uploads and VGA presentation over Ethernet on physical hardware.",
+      "Connected TyrQuake's 320×200 software-rendered framebuffer to the FPGA display while input and audio remain on the host laptop; retained a verified JTAG-to-Avalon control path for debugging.",
+    ],
+    tools: ["SystemVerilog", "C", "Intel DE1-SoC", "Cyclone V", "Quartus Prime", "Platform Designer", "Avalon-MM", "ARM Linux", "TCP/IP", "VGA", "JTAG"],
+    images: [
+      {
+        src: "/projects/fpga-gpu/fpga-quake-display.jpeg",
+        alt: "Quake displayed on a VGA monitor connected to the DE1-SoC FPGA board, with the host laptop beside it",
+      },
+    ],
+    githubUrl: "https://github.com/tonychen-2006/fpga-gpu",
+    category: "personal",
+  },
+  {
     id: 7,
     title: "Music Sync — GoPro × Apple Music Bridge",
     summary: "ESP32 + iOS system that auto-syncs GoPro recordings to Apple Music for frame-perfect video edits.",
