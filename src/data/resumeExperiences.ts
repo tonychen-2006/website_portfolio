@@ -13,10 +13,10 @@ const resumeExperiences: Experience[] = [
     "location": "Vancouver, BC",
     "period": "Jan 2026 – Apr 2026",
     "achievements": [
-      "Led migration of embedded C firmware from FreeRTOS to Zephyr RTOS, re-architecting task scheduling and driver interfaces, adapting CMake build systems and device tree overlays for scalable multi-board support.",
-      "Implemented micro-valve control firmware using GPIO and RTOS threads, enabling automated valve actuation with safe boot, continuous state recovery, and watchdog-supervised real-time operation.",
-      "Integrated and validated LoRa communication (RAK1337), implementing initialization, packet handling, and RTOS-safe asynchronous message processing.",
-      "Designed and implemented a CI/CD pipeline for pull requests using GitHub Actions, triggering builds and unit tests based on board-specific file changes, and enforcing code quality with automated clang-format checks. capacity."
+      "Led migration of an embedded C codebase from FreeRTOS to Zephyr RTOS, re-architecting task scheduling and driver interfaces and adapting CMake builds and device-tree overlays for multi-board support.",
+      "Implemented real-time micro-valve control using GPIO and RTOS threads, with safe boot, continuous state recovery, and watchdog-supervised operation.",
+      "Integrated a LoRa radio module, implementing hardware initialization, packet handling, and RTOS-safe asyn- chronous message processing.",
+      "Built GitHub Actions CI pipeline for board-specific builds, unit tests, and automated clang-format on pull requests."
     ],
     "tags": []
   },
@@ -28,26 +28,26 @@ const resumeExperiences: Experience[] = [
     "location": "Richmond, BC",
     "period": "May 2026 – Aug 2026",
     "achievements": [
-      "Developing STM32 firmware for a real-time audio DSP platform, implementing AUX/ADC signal acquisition, DMA circular buffering, FFT spectrum analysis, and FIR/IIR digital filtering.",
-      "Designed hardware and firmware workflows for analog input conditioning, sampling-rate control, SPI display visualization, and audio signal reconstruction.",
-      "Prototyping a custom STM32-based logic analyzer with high-speed GPIO sampling, trigger-based capture, times- tamped signal recording, and UART/I2C/SPI debugging support."
+      "Engineered an educational audio DSP platform, prototyping the analog circuitry and writing STM32 firmware to demonstrate AUX/ADC acquisition, FFT spectrum analysis, and FIR/IIR digital filtering.",
+      "Developed an FPGA–STM32 processing system, partitioning high-speed sampling, triggering, timestamping, and parallel preprocessing onto FPGA logic while an STM32 manages configuration and data transfer over SPI and custom hardware prototype in KiCad"
     ],
     "tags": []
   },
   {
     "id": 3,
     "role": "Senior Embedded Systems Designer",
-    "company": "UBC Solar Racing (Student Design Team)",
+    "company": "UBC Solar Racing",
     "companyUrl": "https://ubcsolar.com",
     "location": "Vancouver, BC",
     "period": "Sep 2024 – Present",
     "achievements": [
-      "Led firmware development for the Driver Dashboard subsystem, implementing vehicle drive-state control logic as a safety-critical state machine while integrating CAN bus messaging and hardware abstraction layers.",
-      "Built a Raspberry Pi-based Python gateway connected to a Netgear hotspot to parse vehicle telemetry data and stream it to InfluxDB/Grafana, reducing latency ( < 2 seconds) and enabling real-time remote monitoring.",
-      "Implemented a common STM32 CAN bootloader prototype for vehicle boards, supporting application jump logic, firmware image transfer, CRC validation, flash programming, and Raspberry Pi-based .bin deployment tooling.",
-      "Developed Telemetry Board PCB firmware supporting cellular and radio communication paths, packaging CAN messages with timestamps, CAN IDs, payload length, and UART framing while implementing whitelist-based filtering and rate-limiting to reduce unnecessary bandwidth.",
-      "Implemented GPS data acquisition firmware as a FreeRTOS thread that parsed NMEA sentences (GGA, GLL, GSA, RMC, VTG, GSV), validated checksums, and packaged results into CAN frames.",
-      "Designed and implemented a FreeRTOS-based cruise control system, using a custom PI controller with real-time force modeling (drag, rolling resistance, hill climbing) for precise speed regulation, fusing IMU and CAN data with a Kalman filter, and ensuring critical safety logic conditions."
+      "Led firmware development for the Motor Control subsystem, implementing vehicle drive-state (drive/reverse/park) control as a safety-critical state machine using ADC-based potentiometer input, CAN handling, and motor- controller actuation through I ² C-controlled DAC and GPIO control.",
+      "Built an STM32 bootloader for remote firmware updates over CAN, with CRC validation, resumable flashing, and safe application handoff.",
+      "Designed a FreeRTOS-based cruise control system, using a PI controller with real-time force modeling (drag, rolling resistance, hill climbing) for speed regulation.",
+      "Developed STM32 validation infrastructure with Ceedling unit tests, Python-based CAN/state simulation, and hardware test firmware to validate PCB GPIO and serial communication interfaces.",
+      "Developed Telemetry Board firmware for cellular/radio communication, bridging vehicle CAN data over UART with message filtering and rate limiting for bandwidth-efficient transmission.",
+      "Built a Raspberry Pi/Python telemetry gateway to process and stream vehicle CAN telemetry over Ethernet/IP to InfluxDB/Grafana with under 2-second end-to-end latency.",
+      "Implemented GPS data acquisition firmware as a FreeRTOS task that parsed NMEA sentences (GGA, GLL, GSA, RMC, VTG, GSV), validated checksums, and packaged results into CAN frames."
     ],
     "tags": []
   }
@@ -58,31 +58,31 @@ export const resumeEducation: Education[] = [];
 export const resumeSkills: string[] = [
   "C",
   "C++",
-  "Java",
   "Python",
   "SystemVerilog",
-  "Assembly",
-  "MATLAB",
-  "Simulink",
+  "ARM Assembly",
+  "MATLAB/Simulink",
+  "STM32",
+  "ESP32",
   "FreeRTOS",
   "Zephyr RTOS",
-  "Embedded Linux",
+  "device drivers",
+  "HALs",
+  "interrupts",
+  "DMA",
   "CMake",
-  "Device Drivers",
-  "Interrupt Systems",
   "CAN",
   "UART",
   "I2C",
-  "DMA",
-  "LoRa",
-  "BLE",
-  "STM32",
-  "ESP32",
-  "Logic Analyzer",
-  "Oscilloscope",
-  "J-Link",
+  "SPI",
   "GDB",
-  "Makefile"
+  "J-Link",
+  "logic analyzer",
+  "oscilloscope",
+  "Git",
+  "GitHub Actions",
+  "Make",
+  "KiCad"
 ];
 
 export default resumeExperiences;

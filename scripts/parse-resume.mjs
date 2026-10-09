@@ -71,10 +71,17 @@ for (let p = 1; p <= pdf.numPages; p++) {
     if (!('str' in item) || !item.str?.trim()) continue;
     const y = Math.round(item.transform[5] / 2) * 2;
     if (!byY.has(y)) byY.set(y, []);
-    byY.get(y).push(item.str);
+    byY.get(y).push(item);
   }
   [...byY.keys()].sort((a, b) => b - a).forEach(y => {
-    const line = byY.get(y).join(' ').trim();
+    const items = byY.get(y).sort((a, b) => a.transform[4] - b.transform[4]);
+    const line = items.map((item, index) => {
+      if (index === 0) return item.str;
+      const previous = items[index - 1];
+      const gap = item.transform[4] - (previous.transform[4] + previous.width);
+      // Preserve wide gaps between columns so company names stay separate from locations.
+      return (gap > 12 ? '   ' : ' ') + item.str;
+    }).join('').trim();
     if (line) allLines.push(line);
   });
 }
